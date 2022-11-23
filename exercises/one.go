@@ -5,11 +5,12 @@ import (
 	"encoding/csv"
 	"flag"
 	"fmt"
-	"io"
 	"log"
+	"math/rand"
 	"os"
 	"runtime"
 	"strings"
+	"time"
 )
 
 func One() {
@@ -26,52 +27,73 @@ func One() {
 
 	flag.Parse()
 
-	// Must parse the flag arguments before reference
-	fmt.Println(*filename)
+	records, err := readData(*filename)
 
-	f, err := os.Open("problems.csv")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	r := csv.NewReader(f)
+	done := false
+	time.AfterFunc(12*time.Second, func() {
+		// Printed after stated duration
+		// by AfterFunc() method is over
+		fmt.Println("\n12 seconds over....")
+		// loop stops at this point
+		done = true
+	})
 
-	for {
-		record, err := r.Read()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			log.Fatal(err)
-		}
+	var correct int
+	var completed int
 
-		fmt.Println(record)
-	}
+	rand.Shuffle(len(records), func(i, j int) {
+		records[i], records[j] = records[j], records[i]
+	})
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("Simple Shell")
-	fmt.Println("---------------------")
 
-	for {
-		fmt.Print("-> ")
-		text, _ := reader.ReadString('\n')
-		// convert CRLF to LF
-
-		fmt.Println(strings.EqualFold("hi", text))
+	for i, v := range records {
+		question, answer := func() (string, string) {
+			return v[0], v[1]
+		}()
+		fmt.Printf("Problem #%d: %s:", i, question)
+		ans, _ := reader.ReadString('\n')
 
 		if runtime.GOOS == "windows" {
-			text = strings.Replace(text, "\r\n", "", -1)
+			ans = strings.Replace(ans, "\r\n", "", -1)
 		} else {
-			text = strings.Replace(text, "\n", "", -1)
+			ans = strings.Replace(ans, "\n", "", -1)
 		}
 
-		if strings.Compare("hi", text) == 0 {
-			fmt.Println("hello, Yourself")
+		if strings.Compare(answer, ans) == 0 {
+			correct += 1
 		}
 
-		if strings.Compare("exit", text) == 0 {
+		completed = i
+
+		if done {
 			break
 		}
 	}
-	fmt.Println("Bye!")
+
+	fmt.Printf("You scored %d out of %d", correct, completed)
+}
+
+func readData(fileName string) ([][]string, error) {
+	f, err := os.Open(fileName)
+
+	if err != nil {
+		return [][]string{}, err
+	}
+
+	defer f.Close()
+
+	r := csv.NewReader(f)
+
+	records, err := r.ReadAll()
+
+	if err != nil {
+		return [][]string{}, err
+	}
+
+	return records, nil
 }
