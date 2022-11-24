@@ -21,6 +21,8 @@ func CalculateValue(values chan int) {
 func CalculateValueV2(c chan int) {
 	value := rand.Intn(10)
 	fmt.Println("Calculated Random Value V2: {}", value)
+	// the go routine will run synchronously and concurrently without waiting
+	// with the waiting the concurrence of the sends are less predictable
 	time.Sleep(1000 * time.Millisecond)
 	c <- value
 	fmt.Println("1, Only Executes after another goroutine performs a receive on the channel")
