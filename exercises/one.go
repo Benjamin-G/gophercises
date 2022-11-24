@@ -14,11 +14,8 @@ import (
 )
 
 func One() {
-	fmt.Println(flag.Arg(0))
-
 	filename := flag.String("csv", "problems.csv", "a csv file in the format of 'question,answer")
-
-	fmt.Println(*filename)
+	limit := flag.Int("limit", 30, "the time limit for the quiz in seconds")
 
 	flag.Usage = func() {
 		fmt.Printf("Usage of %s \n", os.Args[0])
@@ -33,11 +30,18 @@ func One() {
 		log.Fatal(err)
 	}
 
+	rand.Shuffle(len(records), func(i, j int) {
+		records[i], records[j] = records[j], records[i]
+	})
+
+	reader := bufio.NewReader(os.Stdin)
+
+	fmt.Println("Press ENTER to continue")
+	reader.ReadString('\n')
+
 	done := false
-	time.AfterFunc(12*time.Second, func() {
-		// Printed after stated duration
-		// by AfterFunc() method is over
-		fmt.Println("\n12 seconds over....")
+	time.AfterFunc(time.Duration(*limit)*time.Second, func() {
+		fmt.Println("\nPress ENTER to see your results...")
 		// loop stops at this point
 		done = true
 	})
@@ -45,17 +49,14 @@ func One() {
 	var correct int
 	var completed int
 
-	rand.Shuffle(len(records), func(i, j int) {
-		records[i], records[j] = records[j], records[i]
-	})
-
-	reader := bufio.NewReader(os.Stdin)
-
 	for i, v := range records {
+		if done {
+			break
+		}
 		question, answer := func() (string, string) {
 			return v[0], v[1]
 		}()
-		fmt.Printf("Problem #%d: %s:", i, question)
+		fmt.Printf("Problem #%d: %s:", i+1, question)
 		ans, _ := reader.ReadString('\n')
 
 		if runtime.GOOS == "windows" {
@@ -68,15 +69,13 @@ func One() {
 			correct += 1
 		}
 
-		completed = i
-
-		if done {
-			break
-		}
+		completed = i + 1
 	}
 
 	fmt.Printf("You scored %d out of %d", correct, completed)
 }
+
+// func game(records [][]string, limit int) (int, int)
 
 func readData(fileName string) ([][]string, error) {
 	f, err := os.Open(fileName)
