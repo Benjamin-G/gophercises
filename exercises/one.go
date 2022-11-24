@@ -15,7 +15,7 @@ import (
 
 func One() {
 	filename := flag.String("csv", "problems.csv", "a csv file in the format of 'question,answer")
-	limit := flag.Int("limit", 30, "the time limit for the quiz in seconds")
+	limit := flag.Int("lim", 30, "the time limit for the quiz in seconds")
 
 	flag.Usage = func() {
 		fmt.Printf("Usage of %s \n", os.Args[0])
@@ -39,19 +39,24 @@ func One() {
 	fmt.Println("Press ENTER to continue")
 	reader.ReadString('\n')
 
+	correct, completed := game(records, *limit, *reader)
+
+	fmt.Printf("You scored %d out of %d", correct, completed)
+}
+
+func game(records [][]string, limit int, reader bufio.Reader) (int, int) {
 	done := false
-	time.AfterFunc(time.Duration(*limit)*time.Second, func() {
+	time.AfterFunc(time.Duration(limit)*time.Second, func() {
 		fmt.Println("\nPress ENTER to see your results...")
 		// loop stops at this point
 		done = true
 	})
 
-	var correct int
-	var completed int
+	correct, completed := 0, 0
 
 	for i, v := range records {
 		if done {
-			break
+			return correct, completed
 		}
 		question, answer := func() (string, string) {
 			return v[0], v[1]
@@ -72,10 +77,8 @@ func One() {
 		completed = i + 1
 	}
 
-	fmt.Printf("You scored %d out of %d", correct, completed)
+	return correct, completed
 }
-
-// func game(records [][]string, limit int) (int, int)
 
 func readData(fileName string) ([][]string, error) {
 	f, err := os.Open(fileName)
