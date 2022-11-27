@@ -54,7 +54,7 @@ func bubbleSort[N Number](input []N) []N {
 }
 
 // Interfaces with structs
-type Service interface {
+type Service1 interface {
 	SayHi()
 }
 
@@ -68,7 +68,7 @@ type SecondService struct {
 	id int
 }
 
-func (s SecondService) SayHi() {
+func (s *SecondService) SayHi() {
 	fmt.Println("Hello From the 2nd Service ", s.id)
 }
 
@@ -129,12 +129,12 @@ func Goroutine() {
 	// interfaceMap := make(map[string]Service)
 
 	// We use the interface to allow any struct with
-	interfaceMap := map[string]Service{}
+	interfaceMap := map[string]Service1{}
 
 	// we can then populate our map with
 	// simple ids to particular services
 	interfaceMap["SERVICE-ID-1"] = MyService{}
-	interfaceMap["SERVICE-ID-2"] = SecondService{id: 123}
+	interfaceMap["SERVICE-ID-2"] = &SecondService{id: 123}
 
 	// Incoming HTTP Request wants service 2
 	// we can use the incoming uuid to lookup the required
