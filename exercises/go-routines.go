@@ -30,6 +30,10 @@ func newGenericFunc[age int64 | float64, anon any](myAge age, sec anon) {
 	fmt.Println(myAge, sec)
 }
 
+func logg[input any](i input) {
+	fmt.Println(i)
+}
+
 type Number interface {
 	int16 | int32 | int64 | float32 | float64
 }
@@ -47,6 +51,25 @@ func bubbleSort[N Number](input []N) []N {
 		}
 	}
 	return input
+}
+
+// Interfaces with structs
+type Service interface {
+	SayHi()
+}
+
+type MyService struct{}
+
+func (s MyService) SayHi() {
+	fmt.Println("Hi")
+}
+
+type SecondService struct {
+	id int
+}
+
+func (s SecondService) SayHi() {
+	fmt.Println("Hello From the 2nd Service ", s.id)
 }
 
 func Goroutine() {
@@ -88,4 +111,33 @@ func Goroutine() {
 
 	sortedFloats := bubbleSort(list2)
 	fmt.Println(sortedFloats)
+
+	// MAPs
+	// youtubeSubscribers := map[string]int{
+	// 	"TutorialEdge":     2240,
+	// 	"MKBHD":            6580350,
+	// 	"Fun Fun Function": 171220,
+	// }
+
+	youtubeSubscribers := map[string]int{}
+	youtubeSubscribers["abc"] = 2240
+	// fmt.Println(youtubeSubscribers["MKBHD"]) // prints out 6580350
+	logg(youtubeSubscribers["abc"])
+
+	// we can define a map of string uuids to
+	// the interface type 'Service'
+	// interfaceMap := make(map[string]Service)
+
+	// We use the interface to allow any struct with
+	interfaceMap := map[string]Service{}
+
+	// we can then populate our map with
+	// simple ids to particular services
+	interfaceMap["SERVICE-ID-1"] = MyService{}
+	interfaceMap["SERVICE-ID-2"] = SecondService{id: 123}
+
+	// Incoming HTTP Request wants service 2
+	// we can use the incoming uuid to lookup the required
+	// service and call it's SayHi() method
+	interfaceMap["SERVICE-ID-2"].SayHi()
 }
