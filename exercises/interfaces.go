@@ -74,3 +74,15 @@ func Interfaces() {
 	newCounter = newCounter.addWithValue()
 	fmt.Println(newCounter)
 }
+
+// When working with concurrent code, there are a few different options for safe operation. We’ve gone over two of them:
+
+// Synchronization primitives for sharing memory (e.g., sync.Mutex)
+
+// Synchronization via communicating (e.g., channels)
+
+// However, there are a couple of other options that are implicitly safe within multiple concurrent processes:
+
+// Immutable data
+
+// Data protected by confinement

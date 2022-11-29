@@ -103,7 +103,7 @@ func Goroutine() {
 		fmt.Println("Executing my Concurrent anonymous function")
 		wg.Done()
 	}()
-	wg.Wait()
+	wg.Wait() // <- JOIN POINT!
 	list := []int32{4, 3, 1, 5}
 	list2 := []float64{4.3, 5.2, 10.5, 1.2, 3.2}
 	sorted := bubbleSort(list)
@@ -141,3 +141,10 @@ func Goroutine() {
 	// service and call it's SayHi() method
 	interfaceMap["SERVICE-ID-2"].SayHi()
 }
+
+// Go routine leak detection
+//  a go routine that is runing the entire life of the application
+
+// For Select pattern, for a parent to be able to stop a go routine
+
+// using the close function for unbuffered channels
