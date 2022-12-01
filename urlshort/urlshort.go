@@ -22,7 +22,7 @@ func YAMLHandler(yml []byte, fallback http.Handler) (http.HandlerFunc, error) {
 }
 
 func parseYAML(yaml []byte) (res map[string]string, err error) {
-	out := []map[string]string{}
+	var out []pathUrl
 	err = yamlV2.Unmarshal(yaml, &out)
 	if err != nil {
 		panic(err)
@@ -30,8 +30,13 @@ func parseYAML(yaml []byte) (res map[string]string, err error) {
 
 	res = make(map[string]string)
 	for _, v := range out {
-		res[v["path"]] = v["url"]
+		res[v.Path] = v.URL
 	}
 
 	return res, err
+}
+
+type pathUrl struct {
+	Path string `yaml:"path"`
+	URL  string `yaml:"url"`
 }
