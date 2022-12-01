@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	exercises.Two()
+	exercises.UploadServer()
 }
