@@ -111,7 +111,7 @@ func (mid *PrintHello) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func PrintHelloMiddleware(handlerToWrap func(http.ResponseWriter, *http.Request)) *PrintHello {
-	return &PrintHello{handlerToWrap}
+	return &PrintHello{handler: handlerToWrap}
 }
 
 // Request contexts were introduced in Go version 1.7, and they allow several advanced techniques, but the one we are concerned with here is the storage of request-scoped values. The request context gives us a spot to store and retrieve key/value pairs that stay with the http.Request object. Since a new instance of that object is created at the start of every request, anything we put into it will be particular to the current request.
