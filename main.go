@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	exercises.UploadServer()
+	exercises.Generators()
 }
