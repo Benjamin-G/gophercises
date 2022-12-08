@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	exercises.Generators()
+	exercises.FIFO()
 }
