@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	exercises.FIFO()
+	exercises.UploadServer()
 }
