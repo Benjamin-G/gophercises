@@ -14,7 +14,7 @@ import (
 
 // This equation only applies to so-called stable systems. In a pipeline, a stable system is one in which the rate that work enters the pipeline, or ingress, is equal to the rate in which it exits the system, or egress. If the rate of ingress exceeds the rate of egress, your system is unstable and has entered a death-spiral. If the rate of ingress is less than the rate of egress, you still have an unstable system, but all that’s happening is that your resources aren’t being utilized completely. Not the worst situation in the world, but maybe you care about this if the underutilization is found on a vast scale (e.g., clusters or data centers).
 
-func OriellyFinal() {
+func OriellyCurrent() {
 
 	repeat := func(
 		done <-chan interface{},

@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	exercises.OriellyFinal()
+	exercises.OriellyContext()
 }
