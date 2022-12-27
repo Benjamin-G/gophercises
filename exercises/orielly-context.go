@@ -135,12 +135,19 @@ func OriellyContext() {
 	fmt.Println("OriellyContext Starting...")
 	var wg sync.WaitGroup
 	// ctx, cancel := context.WithCancel(context.Background())
-	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	// 6 seconds + will be successful
+	ctx, cancel := context.WithTimeout(context.Background(), 6*time.Second)
 	defer cancel()
 
 	m := make(map[interface{}]int)
 	m[foo(1)] = 1
 	m[bar(1)] = 2
+
+	// select lock the goroutine
+	select {
+	case <-ctx.Done():
+	case <-time.After(100 * time.Millisecond):
+	}
 
 	fmt.Printf("%v\n", m)
 
