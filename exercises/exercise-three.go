@@ -16,20 +16,23 @@ type TodoPageData struct {
 	Todos     []Todo
 }
 
-func Three() {
-	fmt.Println("Exercise Three Started:")
+func exampleHandler(w http.ResponseWriter, r *http.Request) {
+
 	tmpl := template.Must(template.ParseFiles("./html/layout.html"))
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		data := TodoPageData{
-			PageTitle: "My TODO list",
-			Todos: []Todo{
-				{Title: "Task 1", Done: false},
-				{Title: "Task 2", Done: true},
-				{Title: "Task 3", Done: true},
-			},
-		}
-		tmpl.Execute(w, data)
-	})
+	data := TodoPageData{
+		PageTitle: "My TODO list",
+		Todos: []Todo{
+			{Title: "Task 1", Done: false},
+			{Title: "Task 2", Done: true},
+			{Title: "Task 3", Done: true},
+		},
+	}
+	tmpl.Execute(w, data)
+}
+
+func Three() {
+	fmt.Println("Exercise Three Started...")
 	fmt.Println("Listening on http://localhost:8080")
+	http.HandleFunc("/", exampleHandler)
 	http.ListenAndServe(":8080", nil)
 }
