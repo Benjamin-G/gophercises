@@ -3,6 +3,7 @@ module gophercises
 go 1.19
 
 require (
+	github.com/boltdb/bolt v1.3.1 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator v9.31.0+incompatible // indirect

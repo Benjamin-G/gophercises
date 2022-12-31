@@ -11,16 +11,16 @@ import (
 
 var fileName *string
 
-func init() {
-	fileName = flag.String("yml", "exe2.yml", "a yml file of mapped paths to url")
+// func init() {
+// 	fileName = flag.String("yml", "exe2.yml", "a yml file of mapped paths to url")
 
-	flag.Usage = func() {
-		fmt.Printf("Usage of %s \n", os.Args[0])
-		flag.PrintDefaults()
-	}
+// 	flag.Usage = func() {
+// 		fmt.Printf("Usage of %s \n", os.Args[0])
+// 		flag.PrintDefaults()
+// 	}
 
-	flag.Parse()
-}
+// 	flag.Parse()
+// }
 
 func readDataString(fileName string) ([]byte, error) {
 	f, err := os.ReadFile(fileName)
@@ -40,6 +40,14 @@ func readDataString(fileName string) ([]byte, error) {
 }
 
 func Two() {
+	fileName = flag.String("yml", "exe2.yml", "a yml file of mapped paths to url")
+
+	flag.Usage = func() {
+		fmt.Printf("Usage of %s \n", os.Args[0])
+		flag.PrintDefaults()
+	}
+
+	flag.Parse()
 	// filename := flag.String("csv", "problems.csv", "a csv file in the format of 'question,answer")
 	fmt.Println(fileName)
 	mux := defaultMux()

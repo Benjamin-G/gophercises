@@ -3,7 +3,10 @@ package exercises
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
+
+	"github.com/boltdb/bolt"
 )
 
 var addFlag *bool
@@ -29,24 +32,44 @@ func init() {
 	flag.Parse()
 }
 
+func addTODO() {
+	fmt.Println("Run Add!")
+}
+
+func completeTask() {
+	fmt.Println("Run Do! ", *doFlag)
+}
+
+func printTODOs() {
+	fmt.Println("Run List!")
+}
+
+// go get github.com/boltdb/bolt/...
+
 func TODO_APP() {
+	var app func()
+
 	switch {
-	case flag.NFlag() == 0:
-		fmt.Println("Please specify single flag")
-		flag.Usage()
-		return
 	case flag.NFlag() > 1:
 		fmt.Println("Please specify ONLY a single flag")
 		return
+	case *addFlag:
+		app = addTODO
+	case *listFlag:
+		app = printTODOs
+	case *doFlag != -1:
+		app = completeTask
+	default:
+		fmt.Println("Please specify single flag")
+		flag.Usage()
+		return
 	}
 
-	switch {
-	case *addFlag:
-		fmt.Println("Run Add!")
-	case flag.NFlag() > 1:
-		fmt.Println("Run Do!")
-	case *listFlag:
-		fmt.Println("Run List!")
+	db, err := bolt.Open("todo.db", 0600, nil)
+	if err != nil {
+		log.Fatal(err)
 	}
-	fmt.Println("Run Application!")
+	defer db.Close()
+
+	app()
 }
