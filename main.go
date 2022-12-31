@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	exercises.Three()
+	exercises.TODO_APP()
 }
