@@ -10,6 +10,8 @@ import (
 	"strings"
 )
 
+// https://mholt.github.io/json-to-go/
+// useful for JSON typing quickly
 type PageObject struct {
 	Title   string   `json:"title"`
 	Story   []string `json:"story"`
