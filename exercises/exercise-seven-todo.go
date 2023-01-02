@@ -98,10 +98,15 @@ func printTODOs(db *bolt.DB) {
 
 		c := b.Cursor()
 
+		if k, _ := c.First(); k == nil {
+			fmt.Println("You have completed all TODO.")
+			return nil
+		}
+
 		for k, v := c.First(); k != nil; k, v = c.Next() {
 			var data string
 			json.Unmarshal(v, &data)
-			fmt.Printf("key:%v, value: %s\n", binary.BigEndian.Uint64(k), data)
+			fmt.Printf("key:%v, list-item: %s\n", binary.BigEndian.Uint64(k), data)
 		}
 
 		return nil
