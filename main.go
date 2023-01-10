@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gophercises/exercises"
+	"gophercises/numbers"
 )
 
 func main() {
-	exercises.TODO_APP()
+	numbers.Numbers()
 }
