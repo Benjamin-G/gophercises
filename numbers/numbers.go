@@ -28,10 +28,12 @@ func Numbers() {
 		must(err)
 	}
 
-	// var p = database.PhoneRecord{Id: 4, Number: "(123) 456 7892"}
-	database.UpdatePhoneNumber(db, database.PhoneRecord{Id: 4, Number: "(123) 456 7892"})
-	// done := make(chan interface{})
-	// defer close(done)
+	// // var p = database.PhoneRecord{Id: 4, Number: "(123) 456 7892"}
+	// database.UpdatePhoneNumber(db, database.PhoneRecord{Id: 4, Number: "(123) 456 7892"})
+
+	done := make(chan interface{})
+	defer close(done)
+	database.CleanPhoneNumbers(db, done)
 }
 
 func must(err error) {
