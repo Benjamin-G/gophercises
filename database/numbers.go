@@ -32,8 +32,14 @@ const (
 // 	must(openDb)
 // }
 
+// To import all need capitalization
+type PhoneRecord struct {
+	Id     int
+	Number string
+}
+
 func SetupNumbersDBConnection() (*sql.DB, error) {
-	fmt.Println("Setting db connection")
+	fmt.Println("Setting db connection...")
 	password := os.Getenv("PGSQLPW")
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable ", host, port, user, password, dbname)
 
@@ -54,17 +60,24 @@ func CreatePhoneNumbersTable(db *sql.DB) error {
 }
 
 func CreatePhoneNumber(db *sql.DB, num string) error {
-	statement := `INSERT INTO public.phone_numbers ( value ) values ($1) RETURNING id`
+	// If I need a return value
+	// statement := `INSERT INTO public.phone_numbers ( value ) values ($1) RETURNING id`
 
-	var id int
-	err := db.QueryRow(statement, num).Scan(&id)
-	fmt.Println(id)
+	// var id int
+	// err := db.QueryRow(statement, num).Scan(&id)
+	// fmt.Println(id)
 
 	// No need for return, use execute statement
-	// statement := `INSERT INTO public.phone_numbers ( value ) values ($1)`
-	// res, err := db.Exec(statement, num)
+	statement := `INSERT INTO public.phone_numbers ( value ) values ($1)`
+	_, err := db.Exec(statement, num)
 	// id, _ := res.LastInsertId()
 	// fmt.Println(id)
 
+	return err
+}
+
+func UpdatePhoneNumber(db *sql.DB, p PhoneRecord) error {
+	statement := `UPDATE phone_numbers SET value=$2 WHERE id=$1`
+	_, err := db.Exec(statement, p.Id, p.Number)
 	return err
 }
