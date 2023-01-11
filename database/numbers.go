@@ -11,19 +11,8 @@ import (
 	_ "github.com/lib/pq"
 )
 
+// Can use a global variable however dependencies injection is preferred
 // var db *sql.DB
-
-// type phone struct {
-// 	id     int
-// 	number string
-// }
-
-const (
-	host   = "localhost"
-	port   = 5432
-	user   = "ben"
-	dbname = "go_lang_exercises"
-)
 
 // func init() {
 // 	fmt.Println("Setting db connection")
@@ -34,6 +23,13 @@ const (
 // 	db, openDb = sql.Open("postgres", psqlInfo)
 // 	must(openDb)
 // }
+
+const (
+	host   = "localhost"
+	port   = 5432
+	user   = "ben"
+	dbname = "go_lang_exercises"
+)
 
 // To import all need capitalization
 type PhoneRecord struct {
@@ -117,7 +113,7 @@ func CleanPhoneNumbers(db *sql.DB, done <-chan interface{}) error {
 
 	var needsCleaned = make(chan PhoneRecord)
 
-	// Set up two goroutines parallel with a shared channel, order does not matter
+	// Set up two goroutines parallel with a shared channel, order does not matter, could scale to as many as needed
 	go updateAndClean(needsCleaned)
 	go updateAndClean(needsCleaned)
 
