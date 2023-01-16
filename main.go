@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gophercises/numbers"
+	"gophercises/fundementals"
 )
 
 func main() {
-	numbers.Numbers()
+	fundementals.Run()
 }
