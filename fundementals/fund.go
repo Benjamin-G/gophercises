@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"path"
 	"strconv"
+	"strings"
 )
 
 func Run() {
-	chapterTwo()
+	chapterThree()
+	// chapterTwo()
 }
 
 func chapterTwo() {
@@ -117,4 +119,117 @@ func chapterTwo() {
 		b, _ := strconv.ParseFloat("42.222", 64)
 		fmt.Printf("%[1]v [%[1]T]\n", b)
 	}()
+}
+
+func chapterThree() {
+	// Array
+	func() {
+		names := [4]string{"Kurt", "Janis", "Jimi", "Amy"}
+		fmt.Println(names)
+	}()
+
+	// Slice
+	func() {
+		names := []string{"Kurt", "Janis", "Jimi", "Amy"}
+		fmt.Println(names)
+	}()
+
+	// Append
+	// Appending Two Slices Using the Variadic Operator
+	func() {
+		// create a slice of strings
+		var names []string
+		// append a name to the slice
+		names = append(names, "Kris")
+		fmt.Println(names)
+		// create another slice of strings
+		more := []string{"Janis", "Jimi"}
+		// loop through the additional names
+		names = append(names, more...)
+		fmt.Println(names)
+	}()
+
+	// Printing Slice Capacity of One Million Iterations
+	func() {
+		var sl []int
+		hat := cap(sl)
+		for i := 0; i < 1_000_000; i++ {
+			sl = append(sl, i)
+			c := cap(sl)
+			if c != hat {
+				fmt.Println(hat, c)
+			}
+			hat = c
+		}
+	}()
+
+	// Obtaining Subsets of a Slice
+	func() {
+		letters := []string{"a", "b", "c", "d", "e", "f", "g"}
+		fmt.Println(letters) // [a b c d e f g]
+		// Get 3 elements starting with the third element
+		fmt.Println(letters[2:5]) // [c d e]
+		// functionally equivalent
+		// fmt.Println(letters[4:len(letters)]) // [e f g]
+		fmt.Println(letters[4:]) // [e f g]
+		// functionally equivalent
+		fmt.Println(letters[0:4])             // [a b c d]
+		fmt.Println(letters[:4])              // [a b c d]
+		fmt.Println(letters[:1])              // [a]
+		fmt.Println(letters[len(letters)-1:]) // [g]
+	}()
+
+	// Copy slices
+	func() {
+		names := []string{"Kurt", "Janis", "Jimi", "Amy"}
+		// print the names slice
+		fmt.Println(names)
+		// make a new slice with
+		// the correct length and
+		// capacity to hold the subset
+		subset := make([]string, 3)
+		// copy the first three elements
+		// of the names slice into the
+		// subset slice
+		copy(subset, names[:3])
+		// print out the subset slice
+		fmt.Println(subset)
+		// loop over the subset slice
+		for i, g := range subset {
+			// uppercase each string
+			// and replace the value in
+			// the subset slice
+			subset[i] = strings.ToUpper(g)
+		}
+		// print out the subset slice, again
+		fmt.Println(subset)
+		// print out the original names slice
+		fmt.Println(names)
+
+		slicesOnly := func(names []string) {
+			for _, name := range names {
+				fmt.Println(name)
+			}
+		}
+		// convert to slice of strings
+		// using the 'array[:]' syntax
+		slicesOnly(names[:])
+	}()
+
+	var i int
+	// create an infinite loop
+	for {
+		// increment the index
+		i++
+		if i == 3 {
+			// go to the start of the loop
+			continue
+		}
+		if i == 10 {
+			// stops the loop
+			break
+		}
+		fmt.Println(i)
+	}
+	fmt.Println("finished")
 }
