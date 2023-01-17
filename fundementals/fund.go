@@ -3,13 +3,15 @@ package fundementals
 import (
 	"fmt"
 	"path"
+	"sort"
 	"strconv"
 	"strings"
 )
 
 func Run() {
-	chapterThree()
 	// chapterTwo()
+	// chapterThree()
+	chapterFour()
 }
 
 func chapterTwo() {
@@ -232,4 +234,128 @@ func chapterThree() {
 		fmt.Println(i)
 	}
 	fmt.Println("finished")
+}
+
+func chapterFour() {
+	// Maps Have an “Unlimited” Capacity
+	func() {
+		users := map[string]string{}
+		fmt.Println("Map length:", len(users))
+		users["Kurt"] = "kurt@example.com"
+		users["Janis"] = "janis@example.com"
+		users["Jimi"] = "jimi@example.com"
+		users["Amy"] = "Amy@example.com"
+		fmt.Println("Map length:", len(users))
+	}()
+
+	func() {
+		// var users map[string]string
+		users := make(map[string]string)
+		users["kurt@example.com"] = "Kurt"
+		users["janis@example.com"] = "Janis"
+		users["jimi@example.com"] = "Jimi"
+		// delete the "Unknown" entry
+		_, ok := users["Unknown"]
+		if !ok {
+			fmt.Printf("Key not found: %q\n", "Unknown")
+			// os.Exit(1)
+		} else {
+			delete(users, "Unknown")
+		}
+		// print the map
+		fmt.Println(users)
+
+		// delete the "Kurt" entry
+		delete(users, "kurt@example.com")
+		// print the map
+		fmt.Println(users)
+	}()
+
+	// Counting workds
+	func() {
+		counts := map[string]int{}
+		sentence := "The quick brown fox jumps over the lazy dog"
+		words := strings.Fields(strings.ToLower(sentence))
+		for _, w := range words {
+			// if the word is already in the map, increment it
+			// otherwise, set it to 1 and add it to the map
+			counts[w]++
+		}
+		fmt.Println(counts)
+	}()
+
+	// Sorting Keys and Retrieving Values from a Map
+	func() {
+		// create a map of months
+		months := map[int]string{
+			1:  "January",
+			2:  "February",
+			3:  "March",
+			4:  "April",
+			5:  "May",
+			6:  "June",
+			7:  "July",
+			8:  "August",
+			9:  "September",
+			10: "October",
+			11: "November",
+			12: "December",
+		}
+		// create a slice to hold the keys
+		// set its length to 0 to start with
+		// and its capacity to the length
+		// of the map
+		keys := make([]int, 0, len(months))
+		// loop through the map
+		for k := range months {
+			// append the key to the slice
+			keys = append(keys, k)
+		}
+
+		// sort the keys
+		sort.Ints(keys)
+		// loop through the keys
+		// and print the key/value pairs
+		for _, k := range keys {
+			fmt.Printf("%02d: %s\n", k, months[k])
+		}
+	}()
+
+	// Scoping Variables to an if Statement
+	func() {
+		users := map[string]int{
+			"Kurt":  27,
+			"Janis": 15,
+			"Jimi":  40,
+		}
+		name := "Amy"
+		if age, ok := users[name]; ok {
+			fmt.Printf("%s is %d years old\n", name, age)
+			return
+		}
+		fmt.Printf("Couldn't find %s in the users map\n", name)
+	}()
+
+	// Using fallthrough with a switch Statement
+	func() {
+		recommendActivity := func(temp int) {
+			fmt.Printf("It is %d degrees out. You could", temp)
+			switch {
+			case temp <= 32:
+				fmt.Print(" go ice skating,")
+				fallthrough
+			case temp >= 45 && temp < 90:
+				fmt.Print(" go jogging,")
+				fallthrough
+			case temp >= 80:
+				fmt.Print(" go swimming,")
+				fallthrough
+			default:
+				fmt.Print(" or just stay home.\n")
+			}
+		}
+		recommendActivity(19)
+		recommendActivity(45)
+		recommendActivity(90)
+	}()
 }
