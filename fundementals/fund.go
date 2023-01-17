@@ -2,16 +2,33 @@ package fundementals
 
 import (
 	"fmt"
+	"image"
+	"io"
+	"log"
+	"os"
 	"path"
 	"sort"
 	"strconv"
 	"strings"
+	"time"
+
+	// Package image/jpeg is not used explicitly in the code below,
+	// but is imported for its initialization side-effect, which allows
+	// image.Decode to understand JPEG formatted images. Uncomment these
+	// two lines to also understand GIF and PNG images:
+	// _ "image/gif"
+	// _ "image/png"
+	// 	When imported, the image/png9 package, which contains the init() statement in
+	// Listing 5.44, is called, and the package registers itself with the image package as an image
+	// format.
+	_ "image/jpeg"
 )
 
 func Run() {
 	// chapterTwo()
 	// chapterThree()
-	chapterFour()
+	// chapterFour()
+	chapterFive()
 }
 
 func chapterTwo() {
@@ -358,4 +375,102 @@ func chapterFour() {
 		recommendActivity(45)
 		recommendActivity(90)
 	}()
+}
+
+func decode(reader io.Reader) (image.Rectangle, error) {
+	// decode the image reader
+	m, _, err := image.Decode(reader)
+	if err != nil {
+		// return the error
+		return image.Rectangle{}, err
+	}
+	return m.Bounds(), nil
+}
+
+func chapterFive() {
+	// Deferred Function Calls Are Executed in LIFO Order
+	reader, err := os.Open("pix.jpg")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer reader.Close()
+
+	m, _, err := image.Decode(reader)
+	if err != nil {
+		log.Fatal(err)
+	}
+	bounds := m.Bounds()
+
+	// Calculate a 16-bin histogram for m's red, green, blue and alpha components.
+	//
+	// An image's bounds do not necessarily start at (0, 0), so the two loops start
+	// at bounds.Min.Y and bounds.Min.X. Looping over Y first and X second is more
+	// likely to result in better memory access patterns than X first and Y second.
+	var histogram [16][4]int
+	for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+		for x := bounds.Min.X; x < bounds.Max.X; x++ {
+			r, g, b, a := m.At(x, y).RGBA()
+			// A color's RGBA method returns values in the range [0, 65535].
+			// Shifting by 12 reduces this to the range [0, 15].
+			histogram[r>>12][0]++
+			histogram[g>>12][1]++
+			histogram[b>>12][2]++
+			histogram[a>>12][3]++
+		}
+	}
+
+	// Print the results.
+	fmt.Printf("%-14s %6s %6s %6s %6s\n", "bin", "red", "green", "blue", "alpha")
+	for i, x := range histogram {
+		fmt.Printf("0x%04x-0x%04x: %6d %6d %6d %6d\n", i<<12, (i+1)<<12-1, x[0], x[1], x[2], x[3])
+	}
+
+	func() {
+		defer fmt.Println("one")
+		defer fmt.Println("two")
+		defer fmt.Println("three")
+
+		defer func() {
+			fmt.Println("closing")
+			// src.Close()
+		}()
+
+		// Deferred Calls Are Executed Even if Another Deferred Call Panics
+		// defer fmt.Println("one")
+		// defer panic("two")
+		// defer fmt.Println("three")
+
+		// // Deferred Calls Are Not Executed if the Code Exits
+		// defer fmt.Println("one")
+		// os.Exit(1)
+		// defer fmt.Println("three")
+
+		// // Deferred Calls Are Not Executed if the Code Logs a Fatal Message
+		// defer fmt.Println("one")
+		// log.Fatal("boom")
+		// defer fmt.Println("three")
+	}()
+
+	// capture the current time
+	now := time.Now()
+	// use an anonymous function
+	// to scope variables to be
+	// used in the defer
+	fmt.Printf("0 duration: %s\n", time.Since(now))
+	defer fmt.Printf("5 duration: %s\n", time.Since(now))
+	defer func(now time.Time) {
+		fmt.Printf("4 duration: %s\n", time.Since(now))
+	}(now)
+	defer func() {
+		fmt.Printf("3 duration: %s\n", time.Since(now))
+	}()
+	defer func(now time.Time) {
+		fmt.Printf("2 duration: %s\n", time.Since(now))
+	}(now)
+	defer func() {
+		fmt.Printf("1 duration: %s\n", time.Since(now))
+	}()
+	fmt.Println("sleeping for 50ms...")
+	// sleep for 50ms
+	time.Sleep(50 * time.Millisecond)
 }

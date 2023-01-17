@@ -24,6 +24,10 @@ import (
 // 	must(openDb)
 // }
 
+func init() {
+	fmt.Println("Setting db connection")
+}
+
 const (
 	host   = "localhost"
 	port   = 5432
