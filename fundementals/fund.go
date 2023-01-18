@@ -1,6 +1,7 @@
 package fundementals
 
 import (
+	"encoding/json"
 	"fmt"
 	"image"
 	"io"
@@ -28,7 +29,8 @@ func Run() {
 	// chapterTwo()
 	// chapterThree()
 	// chapterFour()
-	chapterFive()
+	// chapterFive()
+	chapterSix()
 }
 
 func chapterTwo() {
@@ -473,4 +475,50 @@ func chapterFive() {
 	fmt.Println("sleeping for 50ms...")
 	// sleep for 50ms
 	time.Sleep(50 * time.Millisecond)
+}
+
+// Using the json Struct Tag to Control Encoding Output
+type user struct {
+	Name     string `json:"name"`
+	Email    string `json:"email,omitempty"`
+	Password string `json:"-"`
+}
+
+func (u user) String() string {
+	return u.Name + " Email:" + u.Email
+}
+
+func chapterSix() {
+	func() {
+		type myInt int
+		type myString string
+		type myMap map[string]string
+
+		// declare a variable of type MyInt
+		i := myInt(1)
+		// declare a variable of type MyString
+		s := myString("foo")
+		// declare a variable of type MyMap
+		m := myMap{"foo": "bar"}
+		// print the type and value of i
+		fmt.Printf("%[1]T:\t%[1]v\n", i)
+		// print the type and value of s
+		fmt.Printf("%[1]T:\t%[1]v\n", s)
+		// print the type and value of m
+		fmt.Printf("%[1]T:\t%[1]v\n", m)
+
+		u := user{}
+		n, e := u.Name, u.Email
+		fmt.Printf("%+v%+v%+v\n", u, n, e)
+
+		u = user{Name: "Ben", Email: "brgeyer49@gmail.com", Password: "topsecret"}
+		fmt.Println(u.String())
+
+		enc := json.NewEncoder(os.Stdout)
+		// encode the user
+		if err := enc.Encode(u); err != nil {
+			// handle an error if one occurs
+			log.Fatal(err)
+		}
+	}()
 }
