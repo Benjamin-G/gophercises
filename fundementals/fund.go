@@ -488,6 +488,11 @@ func (u user) String() string {
 	return u.Name + " Email:" + u.Email
 }
 
+// Pointer Receiver
+func (u *user) Titleize() {
+	u.Name = strings.ToUpper(u.Name)
+}
+
 func chapterSix() {
 	func() {
 		type myInt int
@@ -513,6 +518,8 @@ func chapterSix() {
 
 		u = user{Name: "Ben", Email: "brgeyer49@gmail.com", Password: "topsecret"}
 		fmt.Println(u.String())
+		u.Titleize()
+		fmt.Println(u.String())
 
 		enc := json.NewEncoder(os.Stdout)
 		// encode the user
@@ -520,5 +527,57 @@ func chapterSix() {
 			// handle an error if one occurs
 			log.Fatal(err)
 		}
+	}()
+
+	func() {
+		// create a pointer to a string
+		s := new(string)
+		s2 := "hello world"
+		// dereference the pointer
+		// and assign a value to it
+		*s = "hello"
+		// create a pointer to an int
+		i := new(int)
+		// dereference the pointer
+		// and assign a value to it
+		*i = 42
+		// create a pointer to a user
+		u1 := new(user)
+		// functionally equivalent and idiomatic
+		u2 := &user{Email: "jammin"}
+
+		// mutate string pointer 1
+		// cap := func(s *string) {
+		// 	c := strings.ToUpper(*s)
+		// 	*s = c
+		// }
+
+		// mutate string pointer 2
+		// cap := func(s *string) {
+		// 	c := new(string)
+		// 	*c = strings.ToUpper(*s)
+		// 	*s = *c
+		// }
+
+		// mutate string pointer 3
+		cap := func(s *string) {
+			// important to make the pointer is not nil
+			if s != nil {
+				*s = strings.ToUpper(*s)
+			}
+		}
+
+		fmt.Println("Pointer mutation strings")
+		fmt.Println(s2)
+		cap(&s2)
+		fmt.Println(s2)
+		cap(s)
+		cap(&u2.Email)
+
+		fmt.Println(*s)
+		fmt.Printf("s: %v, *s: %q\n", s, *s)
+		fmt.Printf("i: %v, *i: %d\n", i, *i)
+		fmt.Printf("u1: %+v, *f: %+v\n", u1, *u1)
+		fmt.Printf("u2: %+v, *f1: %+v\n", u2, *u2)
 	}()
 }
