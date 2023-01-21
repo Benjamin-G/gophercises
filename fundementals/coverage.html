@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>fundementals: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">gophercises/fundementals/fund.go (81.0%)</option>
+				
+				<option value="file1">gophercises/fundementals/testing.go (83.3%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package fundementals
+
+import (
+        "encoding/json"
+        "fmt"
+        "image"
+        "io"
+        "log"
+        "os"
+        "path"
+        "sort"
+        "strconv"
+        "strings"
+        "time"
+
+        // Package image/jpeg is not used explicitly in the code below,
+        // but is imported for its initialization side-effect, which allows
+        // image.Decode to understand JPEG formatted images. Uncomment these
+        // two lines to also understand GIF and PNG images:
+        // _ "image/gif"
+        // _ "image/png"
+        //         When imported, the image/png9 package, which contains the init() statement in
+        // Listing 5.44, is called, and the package registers itself with the image package as an image
+        // format.
+        _ "image/jpeg"
+)
+
+func Run() <span class="cov0" title="0">{
+        // chapterTwo()
+        // chapterThree()
+        // chapterFour()
+        // chapterFive()
+        chapterSix()
+        chapterFive()
+}</span>
+
+func chapterTwo() <span class="cov8" title="1">{
+        // wraparound
+        var maxUint8 uint8 = 11
+        maxUint8 = maxUint8 * 25
+        fmt.Println("value:", maxUint8)
+
+        // Interpreted string literals are character sequences between double quotes, as in "bar".
+        a := "Say \"hello\"\n\t\tto Go!\nHi!"
+        fmt.Println(a)
+        // Raw String Literals with Escape Characters
+        b := `Say "hello"\n\t\tto Go!\n\n\nHi!`
+        fmt.Println(b)
+
+        // Runes
+        // A rune is an alias for int32 and is used to represent individual characters. A rune can be
+        // made up of 1 to 3 int32 values.
+        c := 'A'
+        fmt.Printf("%v (%T)\n", c, c)
+
+        // Properly Iterating over Each Character in a UTF-8 String
+        d := "Hello, 世界"
+        for i, c := range d </span><span class="cov8" title="1">{
+                fmt.Printf("%d: %s (%[2]T)\n", i, string(c))
+        }</span>
+
+        // Zero Values in Go
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                var i int
+                var f float64
+                var b bool
+                var s string
+                fmt.Printf("var i %T = %v\n", i, i)
+                fmt.Printf("var f %T = %f\n", f, f)
+                fmt.Printf("var b %T = %v\n", b, b)
+                fmt.Printf("var s %T = %q\n", s, s)
+        }</span>()
+
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                values := func() (int, float64, bool, string) </span><span class="cov8" title="1">{
+                        return 42, 3.14, true, "hello world"
+                }</span>
+                <span class="cov8" title="1">i, f, b, s := values()
+                fmt.Printf("var i %T = %v\n", i, i)
+                fmt.Printf("var f %T = %f\n", f, f)
+                fmt.Printf("var b %T = %v\n", b, b)
+                fmt.Printf("var s %T = %q\n", s, s)</span>
+        }()
+
+        // path
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                name := "file.txt"
+                ext := path.Ext(name)
+                fmt.Println("Extension:", ext)
+
+                fp := "/home/dir"
+                fp = path.Join(fp, name)
+                fmt.Println("Path:", fp)
+        }</span>()
+
+        // formatting prints
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                s := "Hello, World!"
+                // use '%s' to print a string
+                fmt.Printf("%s\n", s)
+                // use '%q' to print a string
+                fmt.Printf("%q\n", s)
+                d := 123
+                // use '%5d' to print an integer
+                // padded on the left with spaces
+                // to a minimum of 5 characters wide
+                fmt.Printf("Padded: '%5d'\n", d)
+                // use '%5d' to print an integer
+                // padded on the left with zeros
+                // to a minimum of 5 characters wide
+                fmt.Printf("Padded: '%05d'\n", d)
+                // a number larger than the padding
+                // is printed as is
+                fmt.Printf("Padded: '%5d'\n", 1234567890)
+
+                // use '%f' to print a float
+                fmt.Printf("%f\n", 1.2345)
+                // use '%.2f' to print a float
+                // with 2 decimal places
+                fmt.Printf("%.2f\n", 1.2345)
+
+                type user struct {
+                        name string
+                        age  int
+                }
+
+                u := user{
+                        name: "Kurt",
+                        age:  27,
+                }
+                // use '%+v' to print an extended
+                // representation of a value, if possible
+                fmt.Printf("%+v\n", u)
+                // use '%#v' to print the
+                // Go-syntax representation of a value
+                fmt.Printf("%#v\n", u)
+
+                a, _ := strconv.Atoi("42")
+                fmt.Printf("%[1]v [%[1]T]\n", a)
+
+                b, _ := strconv.ParseFloat("42.222", 64)
+                fmt.Printf("%[1]v [%[1]T]\n", b)
+        }</span>()
+}
+
+func chapterThree() <span class="cov8" title="1">{
+        // Array
+        func() </span><span class="cov8" title="1">{
+                names := [4]string{"Kurt", "Janis", "Jimi", "Amy"}
+                fmt.Println(names)
+        }</span>()
+
+        // Slice
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                names := []string{"Kurt", "Janis", "Jimi", "Amy"}
+                fmt.Println(names)
+        }</span>()
+
+        // Append
+        // Appending Two Slices Using the Variadic Operator
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                // create a slice of strings
+                var names []string
+                // append a name to the slice
+                names = append(names, "Kris")
+                fmt.Println(names)
+                // create another slice of strings
+                more := []string{"Janis", "Jimi"}
+                // loop through the additional names
+                names = append(names, more...)
+                fmt.Println(names)
+        }</span>()
+
+        // Printing Slice Capacity of One Million Iterations
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                var sl []int
+                hat := cap(sl)
+                for i := 0; i &lt; 1_000_000; i++ </span><span class="cov8" title="1">{
+                        sl = append(sl, i)
+                        c := cap(sl)
+                        if c != hat </span><span class="cov8" title="1">{
+                                fmt.Println(hat, c)
+                        }</span>
+                        <span class="cov8" title="1">hat = c</span>
+                }
+        }()
+
+        // Obtaining Subsets of a Slice
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                letters := []string{"a", "b", "c", "d", "e", "f", "g"}
+                fmt.Println(letters) // [a b c d e f g]
+                // Get 3 elements starting with the third element
+                fmt.Println(letters[2:5]) // [c d e]
+                // functionally equivalent
+                // fmt.Println(letters[4:len(letters)]) // [e f g]
+                fmt.Println(letters[4:]) // [e f g]
+                // functionally equivalent
+                fmt.Println(letters[0:4])             // [a b c d]
+                fmt.Println(letters[:4])              // [a b c d]
+                fmt.Println(letters[:1])              // [a]
+                fmt.Println(letters[len(letters)-1:]) // [g]
+        }</span>()
+
+        // Copy slices
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                names := []string{"Kurt", "Janis", "Jimi", "Amy"}
+                // print the names slice
+                fmt.Println(names)
+                // make a new slice with
+                // the correct length and
+                // capacity to hold the subset
+                subset := make([]string, 3)
+                // copy the first three elements
+                // of the names slice into the
+                // subset slice
+                copy(subset, names[:3])
+                // print out the subset slice
+                fmt.Println(subset)
+                // loop over the subset slice
+                for i, g := range subset </span><span class="cov8" title="1">{
+                        // uppercase each string
+                        // and replace the value in
+                        // the subset slice
+                        subset[i] = strings.ToUpper(g)
+                }</span>
+                // print out the subset slice, again
+                <span class="cov8" title="1">fmt.Println(subset)
+                // print out the original names slice
+                fmt.Println(names)
+
+                slicesOnly := func(names []string) </span><span class="cov8" title="1">{
+                        for _, name := range names </span><span class="cov8" title="1">{
+                                fmt.Println(name)
+                        }</span>
+                }
+                // convert to slice of strings
+                // using the 'array[:]' syntax
+                <span class="cov8" title="1">slicesOnly(names[:])</span>
+        }()
+
+        <span class="cov8" title="1">var i int
+        // create an infinite loop
+        for </span><span class="cov8" title="1">{
+                // increment the index
+                i++
+                if i == 3 </span><span class="cov8" title="1">{
+                        // go to the start of the loop
+                        continue</span>
+                }
+                <span class="cov8" title="1">if i == 10 </span><span class="cov8" title="1">{
+                        // stops the loop
+                        break</span>
+                }
+                <span class="cov8" title="1">fmt.Println(i)</span>
+        }
+        <span class="cov8" title="1">fmt.Println("finished")</span>
+}
+
+func chapterFour() <span class="cov8" title="1">{
+        // Maps Have an “Unlimited” Capacity
+        func() </span><span class="cov8" title="1">{
+                users := map[string]string{}
+                fmt.Println("Map length:", len(users))
+                users["Kurt"] = "kurt@example.com"
+                users["Janis"] = "janis@example.com"
+                users["Jimi"] = "jimi@example.com"
+                users["Amy"] = "Amy@example.com"
+                fmt.Println("Map length:", len(users))
+        }</span>()
+
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                // var users map[string]string
+                users := make(map[string]string)
+                users["kurt@example.com"] = "Kurt"
+                users["janis@example.com"] = "Janis"
+                users["jimi@example.com"] = "Jimi"
+                // delete the "Unknown" entry
+                _, ok := users["Unknown"]
+                if !ok </span><span class="cov8" title="1">{
+                        fmt.Printf("Key not found: %q\n", "Unknown")
+                        // os.Exit(1)
+                }</span> else<span class="cov0" title="0"> {
+                        delete(users, "Unknown")
+                }</span>
+                // print the map
+                <span class="cov8" title="1">fmt.Println(users)
+
+                // delete the "Kurt" entry
+                delete(users, "kurt@example.com")
+                // print the map
+                fmt.Println(users)</span>
+        }()
+
+        // Counting workds
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                counts := map[string]int{}
+                sentence := "The quick brown fox jumps over the lazy dog"
+                words := strings.Fields(strings.ToLower(sentence))
+                for _, w := range words </span><span class="cov8" title="1">{
+                        // if the word is already in the map, increment it
+                        // otherwise, set it to 1 and add it to the map
+                        counts[w]++
+                }</span>
+                <span class="cov8" title="1">fmt.Println(counts)</span>
+        }()
+
+        // Sorting Keys and Retrieving Values from a Map
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                // create a map of months
+                months := map[int]string{
+                        1:  "January",
+                        2:  "February",
+                        3:  "March",
+                        4:  "April",
+                        5:  "May",
+                        6:  "June",
+                        7:  "July",
+                        8:  "August",
+                        9:  "September",
+                        10: "October",
+                        11: "November",
+                        12: "December",
+                }
+                // create a slice to hold the keys
+                // set its length to 0 to start with
+                // and its capacity to the length
+                // of the map
+                keys := make([]int, 0, len(months))
+                // loop through the map
+                for k := range months </span><span class="cov8" title="1">{
+                        // append the key to the slice
+                        keys = append(keys, k)
+                }</span>
+
+                // sort the keys
+                <span class="cov8" title="1">sort.Ints(keys)
+                // loop through the keys
+                // and print the key/value pairs
+                for _, k := range keys </span><span class="cov8" title="1">{
+                        fmt.Printf("%02d: %s\n", k, months[k])
+                }</span>
+        }()
+
+        // Scoping Variables to an if Statement
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                users := map[string]int{
+                        "Kurt":  27,
+                        "Janis": 15,
+                        "Jimi":  40,
+                }
+                name := "Amy"
+                if age, ok := users[name]; ok </span><span class="cov0" title="0">{
+                        fmt.Printf("%s is %d years old\n", name, age)
+                        return
+                }</span>
+                <span class="cov8" title="1">fmt.Printf("Couldn't find %s in the users map\n", name)</span>
+        }()
+
+        // Using fallthrough with a switch Statement
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                recommendActivity := func(temp int) </span><span class="cov8" title="1">{
+                        fmt.Printf("It is %d degrees out. You could", temp)
+                        switch </span>{
+                        case temp &lt;= 32:<span class="cov8" title="1">
+                                fmt.Print(" go ice skating,")
+                                fallthrough</span>
+                        case temp &gt;= 45 &amp;&amp; temp &lt; 90:<span class="cov8" title="1">
+                                fmt.Print(" go jogging,")
+                                fallthrough</span>
+                        case temp &gt;= 80:<span class="cov8" title="1">
+                                fmt.Print(" go swimming,")
+                                fallthrough</span>
+                        default:<span class="cov8" title="1">
+                                fmt.Print(" or just stay home.\n")</span>
+                        }
+                }
+                <span class="cov8" title="1">recommendActivity(19)
+                recommendActivity(45)
+                recommendActivity(90)</span>
+        }()
+}
+
+func decode(reader io.Reader) (image.Rectangle, error) <span class="cov0" title="0">{
+        // decode the image reader
+        m, _, err := image.Decode(reader)
+        if err != nil </span><span class="cov0" title="0">{
+                // return the error
+                return image.Rectangle{}, err
+        }</span>
+        <span class="cov0" title="0">return m.Bounds(), nil</span>
+}
+
+func chapterFive() <span class="cov0" title="0">{
+        // Deferred Function Calls Are Executed in LIFO Order
+        reader, err := os.Open("pix.jpg")
+        if err != nil </span><span class="cov0" title="0">{
+                log.Fatal(err)
+        }</span>
+        <span class="cov0" title="0">defer reader.Close()
+
+        m, _, err := image.Decode(reader)
+        if err != nil </span><span class="cov0" title="0">{
+                log.Fatal(err)
+        }</span>
+        <span class="cov0" title="0">bounds := m.Bounds()
+
+        // Calculate a 16-bin histogram for m's red, green, blue and alpha components.
+        //
+        // An image's bounds do not necessarily start at (0, 0), so the two loops start
+        // at bounds.Min.Y and bounds.Min.X. Looping over Y first and X second is more
+        // likely to result in better memory access patterns than X first and Y second.
+        var histogram [16][4]int
+        for y := bounds.Min.Y; y &lt; bounds.Max.Y; y++ </span><span class="cov0" title="0">{
+                for x := bounds.Min.X; x &lt; bounds.Max.X; x++ </span><span class="cov0" title="0">{
+                        r, g, b, a := m.At(x, y).RGBA()
+                        // A color's RGBA method returns values in the range [0, 65535].
+                        // Shifting by 12 reduces this to the range [0, 15].
+                        histogram[r&gt;&gt;12][0]++
+                        histogram[g&gt;&gt;12][1]++
+                        histogram[b&gt;&gt;12][2]++
+                        histogram[a&gt;&gt;12][3]++
+                }</span>
+        }
+
+        // Print the results.
+        <span class="cov0" title="0">fmt.Printf("%-14s %6s %6s %6s %6s\n", "bin", "red", "green", "blue", "alpha")
+        for i, x := range histogram </span><span class="cov0" title="0">{
+                fmt.Printf("0x%04x-0x%04x: %6d %6d %6d %6d\n", i&lt;&lt;12, (i+1)&lt;&lt;12-1, x[0], x[1], x[2], x[3])
+        }</span>
+
+        <span class="cov0" title="0">func() </span><span class="cov0" title="0">{
+                defer fmt.Println("one")
+                defer fmt.Println("two")
+                defer fmt.Println("three")
+
+                defer func() </span><span class="cov0" title="0">{
+                        fmt.Println("closing")
+                        // src.Close()
+                }</span>()
+
+                // Deferred Calls Are Executed Even if Another Deferred Call Panics
+                // defer fmt.Println("one")
+                // defer panic("two")
+                // defer fmt.Println("three")
+
+                // // Deferred Calls Are Not Executed if the Code Exits
+                // defer fmt.Println("one")
+                // os.Exit(1)
+                // defer fmt.Println("three")
+
+                // // Deferred Calls Are Not Executed if the Code Logs a Fatal Message
+                // defer fmt.Println("one")
+                // log.Fatal("boom")
+                // defer fmt.Println("three")
+        }()
+
+        // capture the current time
+        <span class="cov0" title="0">now := time.Now()
+        // use an anonymous function
+        // to scope variables to be
+        // used in the defer
+        fmt.Printf("0 duration: %s\n", time.Since(now))
+        defer fmt.Printf("5 duration: %s\n", time.Since(now))
+        defer func(now time.Time) </span><span class="cov0" title="0">{
+                fmt.Printf("4 duration: %s\n", time.Since(now))
+        }</span>(now)
+        <span class="cov0" title="0">defer func() </span><span class="cov0" title="0">{
+                fmt.Printf("3 duration: %s\n", time.Since(now))
+        }</span>()
+        <span class="cov0" title="0">defer func(now time.Time) </span><span class="cov0" title="0">{
+                fmt.Printf("2 duration: %s\n", time.Since(now))
+        }</span>(now)
+        <span class="cov0" title="0">defer func() </span><span class="cov0" title="0">{
+                fmt.Printf("1 duration: %s\n", time.Since(now))
+        }</span>()
+        <span class="cov0" title="0">fmt.Println("sleeping for 50ms...")
+        // sleep for 50ms
+        time.Sleep(50 * time.Millisecond)</span>
+}
+
+// Using the json Struct Tag to Control Encoding Output
+type user struct {
+        Name     string `json:"name"`
+        Email    string `json:"email,omitempty"`
+        Password string `json:"-"`
+}
+
+func (u user) String() string <span class="cov8" title="1">{
+        return u.Name + " Email:" + u.Email
+}</span>
+
+// Pointer Receiver
+func (u *user) Titleize() <span class="cov8" title="1">{
+        u.Name = strings.ToUpper(u.Name)
+}</span>
+
+func chapterSix() <span class="cov8" title="1">{
+        func() </span><span class="cov8" title="1">{
+                type myInt int
+                type myString string
+                type myMap map[string]string
+
+                // declare a variable of type MyInt
+                i := myInt(1)
+                // declare a variable of type MyString
+                s := myString("foo")
+                // declare a variable of type MyMap
+                m := myMap{"foo": "bar"}
+                // print the type and value of i
+                fmt.Printf("%[1]T:\t%[1]v\n", i)
+                // print the type and value of s
+                fmt.Printf("%[1]T:\t%[1]v\n", s)
+                // print the type and value of m
+                fmt.Printf("%[1]T:\t%[1]v\n", m)
+
+                u := user{}
+                n, e := u.Name, u.Email
+                fmt.Printf("%+v%+v%+v\n", u, n, e)
+
+                u = user{Name: "Ben", Email: "brgeyer49@gmail.com", Password: "topsecret"}
+                fmt.Println(u.String())
+                u.Titleize()
+                fmt.Println(u.String())
+
+                enc := json.NewEncoder(os.Stdout)
+                // encode the user
+                if err := enc.Encode(u); err != nil </span><span class="cov0" title="0">{
+                        // handle an error if one occurs
+                        log.Fatal(err)
+                }</span>
+        }()
+
+        <span class="cov8" title="1">func() </span><span class="cov8" title="1">{
+                // create a pointer to a string
+                s := new(string)
+                s2 := "hello world"
+                // dereference the pointer
+                // and assign a value to it
+                *s = "hello"
+                // create a pointer to an int
+                i := new(int)
+                // dereference the pointer
+                // and assign a value to it
+                *i = 42
+                // create a pointer to a user
+                u1 := new(user)
+                // functionally equivalent and idiomatic
+                u2 := &amp;user{Email: "jammin"}
+
+                // mutate string pointer 1
+                // cap := func(s *string) {
+                //         c := strings.ToUpper(*s)
+                //         *s = c
+                // }
+
+                // mutate string pointer 2
+                // cap := func(s *string) {
+                //         c := new(string)
+                //         *c = strings.ToUpper(*s)
+                //         *s = *c
+                // }
+
+                // mutate string pointer 3
+                cap := func(s *string) </span><span class="cov8" title="1">{
+                        // important to make the pointer is not nil
+                        if s != nil </span><span class="cov8" title="1">{
+                                *s = strings.ToUpper(*s)
+                        }</span>
+                }
+
+                <span class="cov8" title="1">fmt.Println("Pointer mutation strings")
+                fmt.Println(s2)
+                cap(&amp;s2)
+                fmt.Println(s2)
+                cap(s)
+                cap(&amp;u2.Email)
+
+                fmt.Println(*s)
+                fmt.Printf("s: %v, *s: %q\n", s, *s)
+                fmt.Printf("i: %v, *i: %d\n", i, *i)
+                fmt.Printf("u1: %+v, *f: %+v\n", u1, *u1)
+                fmt.Printf("u2: %+v, *f1: %+v\n", u2, *u2)</span>
+        }()
+}
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package fundementals
+
+import "fmt"
+
+func getAlphabet(key string) ([]string, error) <span class="cov8" title="1">{
+        az := []string{"A", "B", "C", "D", "E", "F",
+                "G", "H", "I", "J", "K", "L", "M", "N", "O",
+                "P", "Q", "R", "S", "T", "U", "V", "W", "X",
+                "Y", "Z"}
+        m := map[string][]string{
+                "US": az,
+                "UK": az,
+        }
+        if v, ok := m[key]; ok </span><span class="cov8" title="1">{
+                return v, nil
+        }</span>
+        <span class="cov0" title="0">return nil, fmt.Errorf("no key found %s", key)</span>
+}
+
+func addTen(i int) int <span class="cov8" title="1">{
+        return i + 10
+}</span>
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

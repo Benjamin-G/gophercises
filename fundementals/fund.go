@@ -31,6 +31,7 @@ func Run() {
 	// chapterFour()
 	// chapterFive()
 	chapterSix()
+	chapterFive()
 }
 
 func chapterTwo() {
