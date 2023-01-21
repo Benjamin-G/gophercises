@@ -1,10 +1,7 @@
 package fundementals
 
 import (
-	"errors"
-	"fmt"
 	"testing"
-	"time"
 )
 
 func TestSimple(t *testing.T) {
@@ -68,75 +65,75 @@ func Test_Chapters(t *testing.T) {
 // 	}
 // }
 
-func (s *Store) All(tn string) (Model, error) {
-	db := s.data
-	// if the underlying data is nil, return an error
-	if db == nil {
-		return nil, fmt.Errorf("no data")
-	}
-	// check to make sure table exists
-	mods, ok := db[tn]
-	// if table doesn't exist, return an error
-	if !ok {
-		return nil, fmt.Errorf("table %s not found", tn)
-	}
-	// return the slice of models
-	return mods, nil
-}
+// func (s *Store) All(tn string) (Model, error) {
+// 	db := s.data
+// 	// if the underlying data is nil, return an error
+// 	if db == nil {
+// 		return nil, fmt.Errorf("no data")
+// 	}
+// 	// check to make sure table exists
+// 	mods, ok := db[tn]
+// 	// if table doesn't exist, return an error
+// 	if !ok {
+// 		return nil, fmt.Errorf("table %s not found", tn)
+// 	}
+// 	// return the slice of models
+// 	return mods, nil
+// }
 
-func Test_Store_All_Errors(t *testing.T) {
-	t.Parallel()
-	tn := "users"
-	tcs := []struct {
-		name  string
-		store *Store
-		exp   error
-	}{
-		// {name: "no data", store: noData(t), exp: ErrNoData(tn)},
-		// {name: "with data, no users", store: withData(t), exp: ErrTableNotFound{}},
-		{name: "with users", store: withUsers(t), exp: nil},
-	}
-	for _, tc := range tcs {
-		t.Run(tc.name, func(t *testing.T) {
-			_, err := tc.store.All(tn)
-			ok := errors.Is(err, tc.exp)
-			if !ok {
-				t.Fatalf("expected error %v, got %v", tc.exp, err)
-			}
-		})
-	}
-}
+// func Test_Store_All_Errors(t *testing.T) {
+// 	t.Parallel()
+// 	tn := "users"
+// 	tcs := []struct {
+// 		name  string
+// 		store *Store
+// 		exp   error
+// 	}{
+// 		// {name: "no data", store: noData(t), exp: ErrNoData(tn)},
+// 		// {name: "with data, no users", store: withData(t), exp: ErrTableNotFound{}},
+// 		{name: "with users", store: withUsers(t), exp: nil},
+// 	}
+// 	for _, tc := range tcs {
+// 		t.Run(tc.name, func(t *testing.T) {
+// 			_, err := tc.store.All(tn)
+// 			ok := errors.Is(err, tc.exp)
+// 			if !ok {
+// 				t.Fatalf("expected error %v, got %v", tc.exp, err)
+// 			}
+// 		})
+// 	}
+// }
 
-type ErrTableNotFound struct {
-	Table      string
-	OccurredAt time.Time
-}
+// type ErrTableNotFound struct {
+// 	Table      string
+// 	OccurredAt time.Time
+// }
 
-func (e ErrTableNotFound) Error() string {
-	return fmt.Sprintf("[%s] table not found %s", e.OccurredAt, e.Table)
-}
+// func (e ErrTableNotFound) Error() string {
+// 	return fmt.Sprintf("[%s] table not found %s", e.OccurredAt, e.Table)
+// }
 
-func noData(t testing.TB) *Store {
-	return &Store{}
-}
-func withData(t testing.TB) *Store {
-	return &Store{
-		data: map[string]Model{},
-	}
-}
+// func noData(t testing.TB) *Store {
+// 	return &Store{}
+// }
+// func withData(t testing.TB) *Store {
+// 	return &Store{
+// 		data: map[string]Model{},
+// 	}
+// }
 
-func withUsers(t testing.TB) *Store {
-	t.Helper()
-	users := Model{
-		"id": 1,
-		// {"id": 2, "name": "Jane"},
-	}
-	t.Cleanup(func() {
-		t.Log("cleaning up users", users)
-	})
-	return &Store{
-		data: map[string]Model{
-			"users": users,
-		},
-	}
-}
+// func withUsers(t testing.TB) *Store {
+// 	t.Helper()
+// 	users := Model{
+// 		"id": 1,
+// 		// {"id": 2, "name": "Jane"},
+// 	}
+// 	t.Cleanup(func() {
+// 		t.Log("cleaning up users", users)
+// 	})
+// 	return &Store{
+// 		data: map[string]Model{
+// 			"users": users,
+// 		},
+// 	}
+// }

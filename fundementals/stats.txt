@@ -1,0 +1,1486 @@
+value: 19
+Say "hello"
+		to Go!
+Hi!
+Say "hello"\n\t\tto Go!\n\n\nHi!
+65 (int32)
+0: H (string)
+1: e (string)
+2: l (string)
+3: l (string)
+4: o (string)
+5: , (string)
+6:   (string)
+7: 世 (string)
+10: 界 (string)
+var i int = 0
+var f float64 = 0.000000
+var b bool = false
+var s string = ""
+var i int = 42
+var f float64 = 3.140000
+var b bool = true
+var s string = "hello world"
+Extension: .txt
+Path: /home/dir/file.txt
+Hello, World!
+"Hello, World!"
+Padded: '  123'
+Padded: '00123'
+Padded: '1234567890'
+1.234500
+1.23
+{name:Kurt age:27}
+fundementals.user{name:"Kurt", age:27}
+42 [int]
+42.222 [float64]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi Amy]
+[Kris]
+[Kris Janis Jimi]
+0 1
+1 2
+2 4
+4 8
+8 16
+16 32
+32 64
+64 128
+128 256
+256 512
+512 848
+848 1280
+1280 1792
+1792 2560
+2560 3408
+3408 5120
+5120 7168
+7168 9216
+9216 12288
+12288 16384
+16384 21504
+21504 27648
+27648 34816
+34816 44032
+44032 55296
+55296 69632
+69632 88064
+88064 110592
+110592 139264
+139264 175104
+175104 219136
+219136 274432
+274432 344064
+344064 431104
+431104 539648
+539648 674816
+674816 843776
+843776 1055744
+[a b c d e f g]
+[c d e]
+[e f g]
+[a b c d]
+[a b c d]
+[a]
+[g]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi]
+[KURT JANIS JIMI]
+[Kurt Janis Jimi Amy]
+Kurt
+Janis
+Jimi
+Amy
+1
+2
+4
+5
+6
+7
+8
+9
+finished
+Map length: 0
+Map length: 4
+Key not found: "Unknown"
+map[janis@example.com:Janis jimi@example.com:Jimi kurt@example.com:Kurt]
+map[janis@example.com:Janis jimi@example.com:Jimi]
+map[brown:1 dog:1 fox:1 jumps:1 lazy:1 over:1 quick:1 the:2]
+01: January
+02: February
+03: March
+04: April
+05: May
+06: June
+07: July
+08: August
+09: September
+10: October
+11: November
+12: December
+Couldn't find Amy in the users map
+It is 19 degrees out. You could go ice skating, go jogging, go swimming, or just stay home.
+It is 45 degrees out. You could go jogging, go swimming, or just stay home.
+It is 90 degrees out. You could go swimming, or just stay home.
+fundementals.myInt:	1
+fundementals.myString:	foo
+fundementals.myMap:	map[foo:bar]
+ Email:
+Ben Email:brgeyer49@gmail.com
+BEN Email:brgeyer49@gmail.com
+{"name":"BEN","email":"brgeyer49@gmail.com"}
+Pointer mutation strings
+hello world
+HELLO WORLD
+HELLO
+s: 0xc000052ae0, *s: "HELLO"
+i: 0xc00048e100, *i: 42
+u1:  Email:, *f:  Email:
+u2:  Email:JAMMIN, *f1:  Email:JAMMIN
+value: 19
+Say "hello"
+		to Go!
+Hi!
+Say "hello"\n\t\tto Go!\n\n\nHi!
+65 (int32)
+0: H (string)
+1: e (string)
+2: l (string)
+3: l (string)
+4: o (string)
+5: , (string)
+6:   (string)
+7: 世 (string)
+10: 界 (string)
+var i int = 0
+var f float64 = 0.000000
+var b bool = false
+var s string = ""
+var i int = 42
+var f float64 = 3.140000
+var b bool = true
+var s string = "hello world"
+Extension: .txt
+Path: /home/dir/file.txt
+Hello, World!
+"Hello, World!"
+Padded: '  123'
+Padded: '00123'
+Padded: '1234567890'
+1.234500
+1.23
+{name:Kurt age:27}
+fundementals.user{name:"Kurt", age:27}
+42 [int]
+42.222 [float64]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi Amy]
+[Kris]
+[Kris Janis Jimi]
+0 1
+1 2
+2 4
+4 8
+8 16
+16 32
+32 64
+64 128
+128 256
+256 512
+512 848
+848 1280
+1280 1792
+1792 2560
+2560 3408
+3408 5120
+5120 7168
+7168 9216
+9216 12288
+12288 16384
+16384 21504
+21504 27648
+27648 34816
+34816 44032
+44032 55296
+55296 69632
+69632 88064
+88064 110592
+110592 139264
+139264 175104
+175104 219136
+219136 274432
+274432 344064
+344064 431104
+431104 539648
+539648 674816
+674816 843776
+843776 1055744
+[a b c d e f g]
+[c d e]
+[e f g]
+[a b c d]
+[a b c d]
+[a]
+[g]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi]
+[KURT JANIS JIMI]
+[Kurt Janis Jimi Amy]
+Kurt
+Janis
+Jimi
+Amy
+1
+2
+4
+5
+6
+7
+8
+9
+finished
+Map length: 0
+Map length: 4
+Key not found: "Unknown"
+map[janis@example.com:Janis jimi@example.com:Jimi kurt@example.com:Kurt]
+map[janis@example.com:Janis jimi@example.com:Jimi]
+map[brown:1 dog:1 fox:1 jumps:1 lazy:1 over:1 quick:1 the:2]
+01: January
+02: February
+03: March
+04: April
+05: May
+06: June
+07: July
+08: August
+09: September
+10: October
+11: November
+12: December
+Couldn't find Amy in the users map
+It is 19 degrees out. You could go ice skating, go jogging, go swimming, or just stay home.
+It is 45 degrees out. You could go jogging, go swimming, or just stay home.
+It is 90 degrees out. You could go swimming, or just stay home.
+fundementals.myInt:	1
+fundementals.myString:	foo
+fundementals.myMap:	map[foo:bar]
+ Email:
+Ben Email:brgeyer49@gmail.com
+BEN Email:brgeyer49@gmail.com
+{"name":"BEN","email":"brgeyer49@gmail.com"}
+Pointer mutation strings
+hello world
+HELLO WORLD
+HELLO
+s: 0xc000052a50, *s: "HELLO"
+i: 0xc00048e0e8, *i: 42
+u1:  Email:, *f:  Email:
+u2:  Email:JAMMIN, *f1:  Email:JAMMIN
+value: 19
+Say "hello"
+		to Go!
+Hi!
+Say "hello"\n\t\tto Go!\n\n\nHi!
+65 (int32)
+0: H (string)
+1: e (string)
+2: l (string)
+3: l (string)
+4: o (string)
+5: , (string)
+6:   (string)
+7: 世 (string)
+10: 界 (string)
+var i int = 0
+var f float64 = 0.000000
+var b bool = false
+var s string = ""
+var i int = 42
+var f float64 = 3.140000
+var b bool = true
+var s string = "hello world"
+Extension: .txt
+Path: /home/dir/file.txt
+Hello, World!
+"Hello, World!"
+Padded: '  123'
+Padded: '00123'
+Padded: '1234567890'
+1.234500
+1.23
+{name:Kurt age:27}
+fundementals.user{name:"Kurt", age:27}
+42 [int]
+42.222 [float64]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi Amy]
+[Kris]
+[Kris Janis Jimi]
+0 1
+1 2
+2 4
+4 8
+8 16
+16 32
+32 64
+64 128
+128 256
+256 512
+512 848
+848 1280
+1280 1792
+1792 2560
+2560 3408
+3408 5120
+5120 7168
+7168 9216
+9216 12288
+12288 16384
+16384 21504
+21504 27648
+27648 34816
+34816 44032
+44032 55296
+55296 69632
+69632 88064
+88064 110592
+110592 139264
+139264 175104
+175104 219136
+219136 274432
+274432 344064
+344064 431104
+431104 539648
+539648 674816
+674816 843776
+843776 1055744
+[a b c d e f g]
+[c d e]
+[e f g]
+[a b c d]
+[a b c d]
+[a]
+[g]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi]
+[KURT JANIS JIMI]
+[Kurt Janis Jimi Amy]
+Kurt
+Janis
+Jimi
+Amy
+1
+2
+4
+5
+6
+7
+8
+9
+finished
+Map length: 0
+Map length: 4
+Key not found: "Unknown"
+map[janis@example.com:Janis jimi@example.com:Jimi kurt@example.com:Kurt]
+map[janis@example.com:Janis jimi@example.com:Jimi]
+map[brown:1 dog:1 fox:1 jumps:1 lazy:1 over:1 quick:1 the:2]
+01: January
+02: February
+03: March
+04: April
+05: May
+06: June
+07: July
+08: August
+09: September
+10: October
+11: November
+12: December
+Couldn't find Amy in the users map
+It is 19 degrees out. You could go ice skating, go jogging, go swimming, or just stay home.
+It is 45 degrees out. You could go jogging, go swimming, or just stay home.
+It is 90 degrees out. You could go swimming, or just stay home.
+fundementals.myInt:	1
+fundementals.myString:	foo
+fundementals.myMap:	map[foo:bar]
+ Email:
+Ben Email:brgeyer49@gmail.com
+BEN Email:brgeyer49@gmail.com
+{"name":"BEN","email":"brgeyer49@gmail.com"}
+Pointer mutation strings
+hello world
+HELLO WORLD
+HELLO
+s: 0xc000052a50, *s: "HELLO"
+i: 0xc00048e0e8, *i: 42
+u1:  Email:, *f:  Email:
+u2:  Email:JAMMIN, *f1:  Email:JAMMIN
+value: 19
+Say "hello"
+		to Go!
+Hi!
+Say "hello"\n\t\tto Go!\n\n\nHi!
+65 (int32)
+0: H (string)
+1: e (string)
+2: l (string)
+3: l (string)
+4: o (string)
+5: , (string)
+6:   (string)
+7: 世 (string)
+10: 界 (string)
+var i int = 0
+var f float64 = 0.000000
+var b bool = false
+var s string = ""
+var i int = 42
+var f float64 = 3.140000
+var b bool = true
+var s string = "hello world"
+Extension: .txt
+Path: /home/dir/file.txt
+Hello, World!
+"Hello, World!"
+Padded: '  123'
+Padded: '00123'
+Padded: '1234567890'
+1.234500
+1.23
+{name:Kurt age:27}
+fundementals.user{name:"Kurt", age:27}
+42 [int]
+42.222 [float64]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi Amy]
+[Kris]
+[Kris Janis Jimi]
+0 1
+1 2
+2 4
+4 8
+8 16
+16 32
+32 64
+64 128
+128 256
+256 512
+512 848
+848 1280
+1280 1792
+1792 2560
+2560 3408
+3408 5120
+5120 7168
+7168 9216
+9216 12288
+12288 16384
+16384 21504
+21504 27648
+27648 34816
+34816 44032
+44032 55296
+55296 69632
+69632 88064
+88064 110592
+110592 139264
+139264 175104
+175104 219136
+219136 274432
+274432 344064
+344064 431104
+431104 539648
+539648 674816
+674816 843776
+843776 1055744
+[a b c d e f g]
+[c d e]
+[e f g]
+[a b c d]
+[a b c d]
+[a]
+[g]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi]
+[KURT JANIS JIMI]
+[Kurt Janis Jimi Amy]
+Kurt
+Janis
+Jimi
+Amy
+1
+2
+4
+5
+6
+7
+8
+9
+finished
+Map length: 0
+Map length: 4
+Key not found: "Unknown"
+map[janis@example.com:Janis jimi@example.com:Jimi kurt@example.com:Kurt]
+map[janis@example.com:Janis jimi@example.com:Jimi]
+map[brown:1 dog:1 fox:1 jumps:1 lazy:1 over:1 quick:1 the:2]
+01: January
+02: February
+03: March
+04: April
+05: May
+06: June
+07: July
+08: August
+09: September
+10: October
+11: November
+12: December
+Couldn't find Amy in the users map
+It is 19 degrees out. You could go ice skating, go jogging, go swimming, or just stay home.
+It is 45 degrees out. You could go jogging, go swimming, or just stay home.
+It is 90 degrees out. You could go swimming, or just stay home.
+fundementals.myInt:	1
+fundementals.myString:	foo
+fundementals.myMap:	map[foo:bar]
+ Email:
+Ben Email:brgeyer49@gmail.com
+BEN Email:brgeyer49@gmail.com
+{"name":"BEN","email":"brgeyer49@gmail.com"}
+Pointer mutation strings
+hello world
+HELLO WORLD
+HELLO
+s: 0xc000052a50, *s: "HELLO"
+i: 0xc00048e078, *i: 42
+u1:  Email:, *f:  Email:
+u2:  Email:JAMMIN, *f1:  Email:JAMMIN
+value: 19
+Say "hello"
+		to Go!
+Hi!
+Say "hello"\n\t\tto Go!\n\n\nHi!
+65 (int32)
+0: H (string)
+1: e (string)
+2: l (string)
+3: l (string)
+4: o (string)
+5: , (string)
+6:   (string)
+7: 世 (string)
+10: 界 (string)
+var i int = 0
+var f float64 = 0.000000
+var b bool = false
+var s string = ""
+var i int = 42
+var f float64 = 3.140000
+var b bool = true
+var s string = "hello world"
+Extension: .txt
+Path: /home/dir/file.txt
+Hello, World!
+"Hello, World!"
+Padded: '  123'
+Padded: '00123'
+Padded: '1234567890'
+1.234500
+1.23
+{name:Kurt age:27}
+fundementals.user{name:"Kurt", age:27}
+42 [int]
+42.222 [float64]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi Amy]
+[Kris]
+[Kris Janis Jimi]
+0 1
+1 2
+2 4
+4 8
+8 16
+16 32
+32 64
+64 128
+128 256
+256 512
+512 848
+848 1280
+1280 1792
+1792 2560
+2560 3408
+3408 5120
+5120 7168
+7168 9216
+9216 12288
+12288 16384
+16384 21504
+21504 27648
+27648 34816
+34816 44032
+44032 55296
+55296 69632
+69632 88064
+88064 110592
+110592 139264
+139264 175104
+175104 219136
+219136 274432
+274432 344064
+344064 431104
+431104 539648
+539648 674816
+674816 843776
+843776 1055744
+[a b c d e f g]
+[c d e]
+[e f g]
+[a b c d]
+[a b c d]
+[a]
+[g]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi]
+[KURT JANIS JIMI]
+[Kurt Janis Jimi Amy]
+Kurt
+Janis
+Jimi
+Amy
+1
+2
+4
+5
+6
+7
+8
+9
+finished
+Map length: 0
+Map length: 4
+Key not found: "Unknown"
+map[janis@example.com:Janis jimi@example.com:Jimi kurt@example.com:Kurt]
+map[janis@example.com:Janis jimi@example.com:Jimi]
+map[brown:1 dog:1 fox:1 jumps:1 lazy:1 over:1 quick:1 the:2]
+01: January
+02: February
+03: March
+04: April
+05: May
+06: June
+07: July
+08: August
+09: September
+10: October
+11: November
+12: December
+Couldn't find Amy in the users map
+It is 19 degrees out. You could go ice skating, go jogging, go swimming, or just stay home.
+It is 45 degrees out. You could go jogging, go swimming, or just stay home.
+It is 90 degrees out. You could go swimming, or just stay home.
+fundementals.myInt:	1
+fundementals.myString:	foo
+fundementals.myMap:	map[foo:bar]
+ Email:
+Ben Email:brgeyer49@gmail.com
+BEN Email:brgeyer49@gmail.com
+{"name":"BEN","email":"brgeyer49@gmail.com"}
+Pointer mutation strings
+hello world
+HELLO WORLD
+HELLO
+s: 0xc000052a50, *s: "HELLO"
+i: 0xc00048e078, *i: 42
+u1:  Email:, *f:  Email:
+u2:  Email:JAMMIN, *f1:  Email:JAMMIN
+value: 19
+Say "hello"
+		to Go!
+Hi!
+Say "hello"\n\t\tto Go!\n\n\nHi!
+65 (int32)
+0: H (string)
+1: e (string)
+2: l (string)
+3: l (string)
+4: o (string)
+5: , (string)
+6:   (string)
+7: 世 (string)
+10: 界 (string)
+var i int = 0
+var f float64 = 0.000000
+var b bool = false
+var s string = ""
+var i int = 42
+var f float64 = 3.140000
+var b bool = true
+var s string = "hello world"
+Extension: .txt
+Path: /home/dir/file.txt
+Hello, World!
+"Hello, World!"
+Padded: '  123'
+Padded: '00123'
+Padded: '1234567890'
+1.234500
+1.23
+{name:Kurt age:27}
+fundementals.user{name:"Kurt", age:27}
+42 [int]
+42.222 [float64]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi Amy]
+[Kris]
+[Kris Janis Jimi]
+0 1
+1 2
+2 4
+4 8
+8 16
+16 32
+32 64
+64 128
+128 256
+256 512
+512 848
+848 1280
+1280 1792
+1792 2560
+2560 3408
+3408 5120
+5120 7168
+7168 9216
+9216 12288
+12288 16384
+16384 21504
+21504 27648
+27648 34816
+34816 44032
+44032 55296
+55296 69632
+69632 88064
+88064 110592
+110592 139264
+139264 175104
+175104 219136
+219136 274432
+274432 344064
+344064 431104
+431104 539648
+539648 674816
+674816 843776
+843776 1055744
+[a b c d e f g]
+[c d e]
+[e f g]
+[a b c d]
+[a b c d]
+[a]
+[g]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi]
+[KURT JANIS JIMI]
+[Kurt Janis Jimi Amy]
+Kurt
+Janis
+Jimi
+Amy
+1
+2
+4
+5
+6
+7
+8
+9
+finished
+Map length: 0
+Map length: 4
+Key not found: "Unknown"
+map[janis@example.com:Janis jimi@example.com:Jimi kurt@example.com:Kurt]
+map[janis@example.com:Janis jimi@example.com:Jimi]
+map[brown:1 dog:1 fox:1 jumps:1 lazy:1 over:1 quick:1 the:2]
+01: January
+02: February
+03: March
+04: April
+05: May
+06: June
+07: July
+08: August
+09: September
+10: October
+11: November
+12: December
+Couldn't find Amy in the users map
+It is 19 degrees out. You could go ice skating, go jogging, go swimming, or just stay home.
+It is 45 degrees out. You could go jogging, go swimming, or just stay home.
+It is 90 degrees out. You could go swimming, or just stay home.
+fundementals.myInt:	1
+fundementals.myString:	foo
+fundementals.myMap:	map[foo:bar]
+ Email:
+Ben Email:brgeyer49@gmail.com
+BEN Email:brgeyer49@gmail.com
+{"name":"BEN","email":"brgeyer49@gmail.com"}
+Pointer mutation strings
+hello world
+HELLO WORLD
+HELLO
+s: 0xc000052a50, *s: "HELLO"
+i: 0xc00048e068, *i: 42
+u1:  Email:, *f:  Email:
+u2:  Email:JAMMIN, *f1:  Email:JAMMIN
+value: 19
+Say "hello"
+		to Go!
+Hi!
+Say "hello"\n\t\tto Go!\n\n\nHi!
+65 (int32)
+0: H (string)
+1: e (string)
+2: l (string)
+3: l (string)
+4: o (string)
+5: , (string)
+6:   (string)
+7: 世 (string)
+10: 界 (string)
+var i int = 0
+var f float64 = 0.000000
+var b bool = false
+var s string = ""
+var i int = 42
+var f float64 = 3.140000
+var b bool = true
+var s string = "hello world"
+Extension: .txt
+Path: /home/dir/file.txt
+Hello, World!
+"Hello, World!"
+Padded: '  123'
+Padded: '00123'
+Padded: '1234567890'
+1.234500
+1.23
+{name:Kurt age:27}
+fundementals.user{name:"Kurt", age:27}
+42 [int]
+42.222 [float64]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi Amy]
+[Kris]
+[Kris Janis Jimi]
+0 1
+1 2
+2 4
+4 8
+8 16
+16 32
+32 64
+64 128
+128 256
+256 512
+512 848
+848 1280
+1280 1792
+1792 2560
+2560 3408
+3408 5120
+5120 7168
+7168 9216
+9216 12288
+12288 16384
+16384 21504
+21504 27648
+27648 34816
+34816 44032
+44032 55296
+55296 69632
+69632 88064
+88064 110592
+110592 139264
+139264 175104
+175104 219136
+219136 274432
+274432 344064
+344064 431104
+431104 539648
+539648 674816
+674816 843776
+843776 1055744
+[a b c d e f g]
+[c d e]
+[e f g]
+[a b c d]
+[a b c d]
+[a]
+[g]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi]
+[KURT JANIS JIMI]
+[Kurt Janis Jimi Amy]
+Kurt
+Janis
+Jimi
+Amy
+1
+2
+4
+5
+6
+7
+8
+9
+finished
+Map length: 0
+Map length: 4
+Key not found: "Unknown"
+map[janis@example.com:Janis jimi@example.com:Jimi kurt@example.com:Kurt]
+map[janis@example.com:Janis jimi@example.com:Jimi]
+map[brown:1 dog:1 fox:1 jumps:1 lazy:1 over:1 quick:1 the:2]
+01: January
+02: February
+03: March
+04: April
+05: May
+06: June
+07: July
+08: August
+09: September
+10: October
+11: November
+12: December
+Couldn't find Amy in the users map
+It is 19 degrees out. You could go ice skating, go jogging, go swimming, or just stay home.
+It is 45 degrees out. You could go jogging, go swimming, or just stay home.
+It is 90 degrees out. You could go swimming, or just stay home.
+fundementals.myInt:	1
+fundementals.myString:	foo
+fundementals.myMap:	map[foo:bar]
+ Email:
+Ben Email:brgeyer49@gmail.com
+BEN Email:brgeyer49@gmail.com
+{"name":"BEN","email":"brgeyer49@gmail.com"}
+Pointer mutation strings
+hello world
+HELLO WORLD
+HELLO
+s: 0xc000052a50, *s: "HELLO"
+i: 0xc00048e0e8, *i: 42
+u1:  Email:, *f:  Email:
+u2:  Email:JAMMIN, *f1:  Email:JAMMIN
+value: 19
+Say "hello"
+		to Go!
+Hi!
+Say "hello"\n\t\tto Go!\n\n\nHi!
+65 (int32)
+0: H (string)
+1: e (string)
+2: l (string)
+3: l (string)
+4: o (string)
+5: , (string)
+6:   (string)
+7: 世 (string)
+10: 界 (string)
+var i int = 0
+var f float64 = 0.000000
+var b bool = false
+var s string = ""
+var i int = 42
+var f float64 = 3.140000
+var b bool = true
+var s string = "hello world"
+Extension: .txt
+Path: /home/dir/file.txt
+Hello, World!
+"Hello, World!"
+Padded: '  123'
+Padded: '00123'
+Padded: '1234567890'
+1.234500
+1.23
+{name:Kurt age:27}
+fundementals.user{name:"Kurt", age:27}
+42 [int]
+42.222 [float64]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi Amy]
+[Kris]
+[Kris Janis Jimi]
+0 1
+1 2
+2 4
+4 8
+8 16
+16 32
+32 64
+64 128
+128 256
+256 512
+512 848
+848 1280
+1280 1792
+1792 2560
+2560 3408
+3408 5120
+5120 7168
+7168 9216
+9216 12288
+12288 16384
+16384 21504
+21504 27648
+27648 34816
+34816 44032
+44032 55296
+55296 69632
+69632 88064
+88064 110592
+110592 139264
+139264 175104
+175104 219136
+219136 274432
+274432 344064
+344064 431104
+431104 539648
+539648 674816
+674816 843776
+843776 1055744
+[a b c d e f g]
+[c d e]
+[e f g]
+[a b c d]
+[a b c d]
+[a]
+[g]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi]
+[KURT JANIS JIMI]
+[Kurt Janis Jimi Amy]
+Kurt
+Janis
+Jimi
+Amy
+1
+2
+4
+5
+6
+7
+8
+9
+finished
+Map length: 0
+Map length: 4
+Key not found: "Unknown"
+map[janis@example.com:Janis jimi@example.com:Jimi kurt@example.com:Kurt]
+map[janis@example.com:Janis jimi@example.com:Jimi]
+map[brown:1 dog:1 fox:1 jumps:1 lazy:1 over:1 quick:1 the:2]
+01: January
+02: February
+03: March
+04: April
+05: May
+06: June
+07: July
+08: August
+09: September
+10: October
+11: November
+12: December
+Couldn't find Amy in the users map
+It is 19 degrees out. You could go ice skating, go jogging, go swimming, or just stay home.
+It is 45 degrees out. You could go jogging, go swimming, or just stay home.
+It is 90 degrees out. You could go swimming, or just stay home.
+fundementals.myInt:	1
+fundementals.myString:	foo
+fundementals.myMap:	map[foo:bar]
+ Email:
+Ben Email:brgeyer49@gmail.com
+BEN Email:brgeyer49@gmail.com
+{"name":"BEN","email":"brgeyer49@gmail.com"}
+Pointer mutation strings
+hello world
+HELLO WORLD
+HELLO
+s: 0xc000052a50, *s: "HELLO"
+i: 0xc00048e078, *i: 42
+u1:  Email:, *f:  Email:
+u2:  Email:JAMMIN, *f1:  Email:JAMMIN
+value: 19
+Say "hello"
+		to Go!
+Hi!
+Say "hello"\n\t\tto Go!\n\n\nHi!
+65 (int32)
+0: H (string)
+1: e (string)
+2: l (string)
+3: l (string)
+4: o (string)
+5: , (string)
+6:   (string)
+7: 世 (string)
+10: 界 (string)
+var i int = 0
+var f float64 = 0.000000
+var b bool = false
+var s string = ""
+var i int = 42
+var f float64 = 3.140000
+var b bool = true
+var s string = "hello world"
+Extension: .txt
+Path: /home/dir/file.txt
+Hello, World!
+"Hello, World!"
+Padded: '  123'
+Padded: '00123'
+Padded: '1234567890'
+1.234500
+1.23
+{name:Kurt age:27}
+fundementals.user{name:"Kurt", age:27}
+42 [int]
+42.222 [float64]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi Amy]
+[Kris]
+[Kris Janis Jimi]
+0 1
+1 2
+2 4
+4 8
+8 16
+16 32
+32 64
+64 128
+128 256
+256 512
+512 848
+848 1280
+1280 1792
+1792 2560
+2560 3408
+3408 5120
+5120 7168
+7168 9216
+9216 12288
+12288 16384
+16384 21504
+21504 27648
+27648 34816
+34816 44032
+44032 55296
+55296 69632
+69632 88064
+88064 110592
+110592 139264
+139264 175104
+175104 219136
+219136 274432
+274432 344064
+344064 431104
+431104 539648
+539648 674816
+674816 843776
+843776 1055744
+[a b c d e f g]
+[c d e]
+[e f g]
+[a b c d]
+[a b c d]
+[a]
+[g]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi]
+[KURT JANIS JIMI]
+[Kurt Janis Jimi Amy]
+Kurt
+Janis
+Jimi
+Amy
+1
+2
+4
+5
+6
+7
+8
+9
+finished
+Map length: 0
+Map length: 4
+Key not found: "Unknown"
+map[janis@example.com:Janis jimi@example.com:Jimi kurt@example.com:Kurt]
+map[janis@example.com:Janis jimi@example.com:Jimi]
+map[brown:1 dog:1 fox:1 jumps:1 lazy:1 over:1 quick:1 the:2]
+01: January
+02: February
+03: March
+04: April
+05: May
+06: June
+07: July
+08: August
+09: September
+10: October
+11: November
+12: December
+Couldn't find Amy in the users map
+It is 19 degrees out. You could go ice skating, go jogging, go swimming, or just stay home.
+It is 45 degrees out. You could go jogging, go swimming, or just stay home.
+It is 90 degrees out. You could go swimming, or just stay home.
+fundementals.myInt:	1
+fundementals.myString:	foo
+fundementals.myMap:	map[foo:bar]
+ Email:
+Ben Email:brgeyer49@gmail.com
+BEN Email:brgeyer49@gmail.com
+{"name":"BEN","email":"brgeyer49@gmail.com"}
+Pointer mutation strings
+hello world
+HELLO WORLD
+HELLO
+s: 0xc000052a50, *s: "HELLO"
+i: 0xc00048e088, *i: 42
+u1:  Email:, *f:  Email:
+u2:  Email:JAMMIN, *f1:  Email:JAMMIN
+value: 19
+Say "hello"
+		to Go!
+Hi!
+Say "hello"\n\t\tto Go!\n\n\nHi!
+65 (int32)
+0: H (string)
+1: e (string)
+2: l (string)
+3: l (string)
+4: o (string)
+5: , (string)
+6:   (string)
+7: 世 (string)
+10: 界 (string)
+var i int = 0
+var f float64 = 0.000000
+var b bool = false
+var s string = ""
+var i int = 42
+var f float64 = 3.140000
+var b bool = true
+var s string = "hello world"
+Extension: .txt
+Path: /home/dir/file.txt
+Hello, World!
+"Hello, World!"
+Padded: '  123'
+Padded: '00123'
+Padded: '1234567890'
+1.234500
+1.23
+{name:Kurt age:27}
+fundementals.user{name:"Kurt", age:27}
+42 [int]
+42.222 [float64]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi Amy]
+[Kris]
+[Kris Janis Jimi]
+0 1
+1 2
+2 4
+4 8
+8 16
+16 32
+32 64
+64 128
+128 256
+256 512
+512 848
+848 1280
+1280 1792
+1792 2560
+2560 3408
+3408 5120
+5120 7168
+7168 9216
+9216 12288
+12288 16384
+16384 21504
+21504 27648
+27648 34816
+34816 44032
+44032 55296
+55296 69632
+69632 88064
+88064 110592
+110592 139264
+139264 175104
+175104 219136
+219136 274432
+274432 344064
+344064 431104
+431104 539648
+539648 674816
+674816 843776
+843776 1055744
+[a b c d e f g]
+[c d e]
+[e f g]
+[a b c d]
+[a b c d]
+[a]
+[g]
+[Kurt Janis Jimi Amy]
+[Kurt Janis Jimi]
+[KURT JANIS JIMI]
+[Kurt Janis Jimi Amy]
+Kurt
+Janis
+Jimi
+Amy
+1
+2
+4
+5
+6
+7
+8
+9
+finished
+Map length: 0
+Map length: 4
+Key not found: "Unknown"
+map[janis@example.com:Janis jimi@example.com:Jimi kurt@example.com:Kurt]
+map[janis@example.com:Janis jimi@example.com:Jimi]
+map[brown:1 dog:1 fox:1 jumps:1 lazy:1 over:1 quick:1 the:2]
+01: January
+02: February
+03: March
+04: April
+05: May
+06: June
+07: July
+08: August
+09: September
+10: October
+11: November
+12: December
+Couldn't find Amy in the users map
+It is 19 degrees out. You could go ice skating, go jogging, go swimming, or just stay home.
+It is 45 degrees out. You could go jogging, go swimming, or just stay home.
+It is 90 degrees out. You could go swimming, or just stay home.
+fundementals.myInt:	1
+fundementals.myString:	foo
+fundementals.myMap:	map[foo:bar]
+ Email:
+Ben Email:brgeyer49@gmail.com
+BEN Email:brgeyer49@gmail.com
+{"name":"BEN","email":"brgeyer49@gmail.com"}
+Pointer mutation strings
+hello world
+HELLO WORLD
+HELLO
+s: 0xc000052a50, *s: "HELLO"
+i: 0xc00048e0e8, *i: 42
+u1:  Email:, *f:  Email:
+u2:  Email:JAMMIN, *f1:  Email:JAMMIN
+goos: windows
+goarch: amd64
+pkg: gophercises/fundementals
+cpu: Intel(R) Core(TM) i7-4720HQ CPU @ 2.60GHz
+BenchmarkAddTen-8                     	1000000000	         0.3606 ns/op
+BenchmarkAddTen-8                     	1000000000	         0.3327 ns/op
+BenchmarkAddTen-8                     	1000000000	         0.3264 ns/op
+BenchmarkAddTen-8                     	1000000000	         0.3219 ns/op
+BenchmarkAddTen-8                     	1000000000	         0.3148 ns/op
+BenchmarkAddTen-8                     	1000000000	         0.3144 ns/op
+BenchmarkAddTen-8                     	1000000000	         0.3275 ns/op
+BenchmarkAddTen-8                     	1000000000	         0.3269 ns/op
+BenchmarkAddTen-8                     	1000000000	         0.3152 ns/op
+BenchmarkAddTen-8                     	1000000000	         0.3565 ns/op
+BenchmarkAtomicStoreInt32-8           	190680642	         6.290 ns/op
+BenchmarkAtomicStoreInt32-8           	195938072	         5.776 ns/op
+BenchmarkAtomicStoreInt32-8           	205512390	         5.706 ns/op
+BenchmarkAtomicStoreInt32-8           	207001765	         5.709 ns/op
+BenchmarkAtomicStoreInt32-8           	203397862	         5.758 ns/op
+BenchmarkAtomicStoreInt32-8           	210276307	         5.957 ns/op
+BenchmarkAtomicStoreInt32-8           	212992658	         5.813 ns/op
+BenchmarkAtomicStoreInt32-8           	200516462	         6.299 ns/op
+BenchmarkAtomicStoreInt32-8           	196502967	         5.668 ns/op
+BenchmarkAtomicStoreInt32-8           	183688154	         6.111 ns/op
+BenchmarkAtomicStoreInt64-8           	204131797	         5.886 ns/op
+BenchmarkAtomicStoreInt64-8           	206547877	         5.830 ns/op
+BenchmarkAtomicStoreInt64-8           	206465500	         5.766 ns/op
+BenchmarkAtomicStoreInt64-8           	201322284	         6.007 ns/op
+BenchmarkAtomicStoreInt64-8           	200789397	         5.997 ns/op
+BenchmarkAtomicStoreInt64-8           	208656787	         5.744 ns/op
+BenchmarkAtomicStoreInt64-8           	212069061	         5.776 ns/op
+BenchmarkAtomicStoreInt64-8           	200745535	         5.738 ns/op
+BenchmarkAtomicStoreInt64-8           	205363723	         5.894 ns/op
+BenchmarkAtomicStoreInt64-8           	210374218	         5.766 ns/op
+BenchmarkPopcnt1-8                    	1000000000	         0.3043 ns/op
+BenchmarkPopcnt1-8                    	1000000000	         0.3152 ns/op
+BenchmarkPopcnt1-8                    	1000000000	         0.3144 ns/op
+BenchmarkPopcnt1-8                    	1000000000	         0.3148 ns/op
+BenchmarkPopcnt1-8                    	1000000000	         0.3192 ns/op
+BenchmarkPopcnt1-8                    	1000000000	         0.3078 ns/op
+BenchmarkPopcnt1-8                    	1000000000	         0.3061 ns/op
+BenchmarkPopcnt1-8                    	1000000000	         0.3147 ns/op
+BenchmarkPopcnt1-8                    	1000000000	         0.3161 ns/op
+BenchmarkPopcnt1-8                    	1000000000	         0.2892 ns/op
+BenchmarkPopcnt2-8                    	664919774	         1.920 ns/op
+BenchmarkPopcnt2-8                    	612137461	         2.018 ns/op
+BenchmarkPopcnt2-8                    	643246766	         1.986 ns/op
+BenchmarkPopcnt2-8                    	595951026	         1.883 ns/op
+BenchmarkPopcnt2-8                    	668744604	         1.964 ns/op
+BenchmarkPopcnt2-8                    	576342577	         1.933 ns/op
+BenchmarkPopcnt2-8                    	606145098	         1.912 ns/op
+BenchmarkPopcnt2-8                    	588075014	         1.856 ns/op
+BenchmarkPopcnt2-8                    	658680530	         1.864 ns/op
+BenchmarkPopcnt2-8                    	641290104	         1.873 ns/op
+BenchmarkCalculateSum512-8            	   98266	     12745 ns/op
+BenchmarkCalculateSum512-8            	   98731	     12135 ns/op
+BenchmarkCalculateSum512-8            	   98293	     10487 ns/op
+BenchmarkCalculateSum512-8            	   75596	     16703 ns/op
+BenchmarkCalculateSum512-8            	   82712	     17262 ns/op
+BenchmarkCalculateSum512-8            	   79329	     13692 ns/op
+BenchmarkCalculateSum512-8            	  121932	     13744 ns/op
+BenchmarkCalculateSum512-8            	  133219	      9886 ns/op
+BenchmarkCalculateSum512-8            	  118526	      9452 ns/op
+BenchmarkCalculateSum512-8            	  108092	      9670 ns/op
+BenchmarkCalculateSum513-8            	  157080	      7914 ns/op
+BenchmarkCalculateSum513-8            	  170773	      7820 ns/op
+BenchmarkCalculateSum513-8            	  151696	      7763 ns/op
+BenchmarkCalculateSum513-8            	  149874	      8178 ns/op
+BenchmarkCalculateSum513-8            	  148152	      8280 ns/op
+BenchmarkCalculateSum513-8            	  151088	      7942 ns/op
+BenchmarkCalculateSum513-8            	  147447	      7831 ns/op
+BenchmarkCalculateSum513-8            	  168579	      8420 ns/op
+BenchmarkCalculateSum513-8            	  144580	      9405 ns/op
+BenchmarkCalculateSum513-8            	  120738	      8622 ns/op
+BenchmarkCalculateSum512_Accurate-8   	     100	  12609432 ns/op
+BenchmarkCalculateSum512_Accurate-8   	     100	  12922985 ns/op
+BenchmarkCalculateSum512_Accurate-8   	      93	  11961206 ns/op
+BenchmarkCalculateSum512_Accurate-8   	      99	  11698922 ns/op
+BenchmarkCalculateSum512_Accurate-8   	     100	  11740881 ns/op
+BenchmarkCalculateSum512_Accurate-8   	     100	  12009142 ns/op
+BenchmarkCalculateSum512_Accurate-8   	     100	  11922649 ns/op
+BenchmarkCalculateSum512_Accurate-8   	     102	  11959689 ns/op
+BenchmarkCalculateSum512_Accurate-8   	      98	  11734710 ns/op
+BenchmarkCalculateSum512_Accurate-8   	     100	  11705111 ns/op
+BenchmarkCalculateSum513_Accurate-8   	     100	  12893025 ns/op
+BenchmarkCalculateSum513_Accurate-8   	      82	  12430679 ns/op
+BenchmarkCalculateSum513_Accurate-8   	     100	  12843602 ns/op
+BenchmarkCalculateSum513_Accurate-8   	      96	  12415968 ns/op
+BenchmarkCalculateSum513_Accurate-8   	     100	  12657677 ns/op
+BenchmarkCalculateSum513_Accurate-8   	      82	  12505161 ns/op
+BenchmarkCalculateSum513_Accurate-8   	      91	  12614652 ns/op
+BenchmarkCalculateSum513_Accurate-8   	      85	  12576606 ns/op
+BenchmarkCalculateSum513_Accurate-8   	      93	  12636700 ns/op
+BenchmarkCalculateSum513_Accurate-8   	     100	  12254662 ns/op
+PASS
+ok  	gophercises/fundementals	115.904s
