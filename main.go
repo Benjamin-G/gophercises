@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	fundementals.Run()
+	fundementals.RunErrorMain()
 }
