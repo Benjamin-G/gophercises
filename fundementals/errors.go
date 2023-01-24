@@ -2,6 +2,7 @@ package fundementals
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -264,4 +265,164 @@ func (u User) String() string {
 type Admin struct {
 	*User
 	Perms map[string]bool
+}
+
+type ErrorA struct {
+	err error
+}
+
+func (e ErrorA) Error() string {
+	return fmt.Sprintf("[ErrorA] %s", e.err)
+}
+
+func (e ErrorA) Unwrap() error {
+	if _, ok := e.err.(Unwrapper); ok {
+		return errors.Unwrap(e.err)
+	}
+
+	return e.err
+}
+
+func (e ErrorA) As(target any) bool {
+	ex, ok := target.(*ErrorA)
+	if !ok {
+		// if the target is not an ErrorA,
+		// pass the underlying error up the chain
+		// by calling errors.As with the underlying error
+		// and the target error
+		return errors.As(e.err, target)
+	}
+	// set the target to the current error
+	(*ex) = e
+	return true
+}
+
+func (e ErrorA) Is(target error) bool {
+	if _, ok := target.(ErrorA); ok {
+		// return true if target is ErrorA
+		return true
+	}
+	// if not, pass the underlying error up the chain
+	// by calling errors.Is with the underlying error
+	// and the target error
+	return errors.Is(e.err, target)
+}
+
+type ErrorB struct {
+	err error
+}
+
+func (e ErrorB) Error() string {
+	return fmt.Sprintf("[ErrorB] %s", e.err)
+}
+
+func (e ErrorB) Unwrap() error {
+	if _, ok := e.err.(Unwrapper); ok {
+		return errors.Unwrap(e.err)
+	}
+
+	return e.err
+}
+
+func (e ErrorB) As(target any) bool {
+	ex, ok := target.(*ErrorB)
+	if !ok {
+		// if the target is not an ErrorA,
+		// pass the underlying error up the chain
+		// by calling errors.As with the underlying error
+		// and the target error
+		return errors.As(e.err, target)
+	}
+	// set the target to the current error
+	(*ex) = e
+	return true
+}
+
+func (e ErrorB) Is(target error) bool {
+	if _, ok := target.(ErrorB); ok {
+		// return true if target is ErrorA
+		return true
+	}
+	// if not, pass the underlying error up the chain
+	// by calling errors.Is with the underlying error
+	// and the target error
+	return errors.Is(e.err, target)
+}
+
+type ErrorC struct {
+	err error
+}
+
+func (e ErrorC) Error() string {
+	return fmt.Sprintf("[ErrorC] %s", e.err)
+}
+
+func (e ErrorC) Unwrap() error {
+	if _, ok := e.err.(Unwrapper); ok {
+		return errors.Unwrap(e.err)
+	}
+
+	return e.err
+}
+
+func (e ErrorC) As(target any) bool {
+	ex, ok := target.(*ErrorC)
+	if !ok {
+		// if the target is not an ErrorA,
+		// pass the underlying error up the chain
+		// by calling errors.As with the underlying error
+		// and the target error
+		return errors.As(e.err, target)
+	}
+	// set the target to the current error
+	(*ex) = e
+	return true
+}
+
+func (e ErrorC) Is(target error) bool {
+	if _, ok := target.(ErrorC); ok {
+		// return true if target is ErrorA
+		return true
+	}
+	// if not, pass the underlying error up the chain
+	// by calling errors.Is with the underlying error
+	// and the target error
+	return errors.Is(e.err, target)
+}
+
+// Like the errors.Unwrap function, errors.As also has a documented, but unpublished,
+// interface, Listing 9.64, that can be implemented on custom errors.
+type AsError interface {
+	As(target any) bool
+}
+
+type Unwrapper interface {
+	Unwrap() error
+}
+
+type IsError interface {
+	Is(target error) bool
+}
+
+// Wrapper wraps an error with a bunch of
+// other errors.
+// ex. Wrapper(original) #=> ErrorC -> ErrorB -> ErrorA -> original
+func Wrapper(original error) error {
+	original = ErrorA{original}
+	original = ErrorB{original}
+	original = ErrorC{original}
+	return original
+}
+
+// WrapperLong wraps an error with a bunch of
+// other errors.
+// ex. WrapperLong(original) #=> ErrorC -> ErrorB -> ErrorA -> original
+func WrapperLong(original error) error {
+	return ErrorC{
+		err: ErrorB{
+			err: ErrorA{
+				err: original,
+			},
+		},
+	}
 }
