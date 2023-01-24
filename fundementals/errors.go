@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"runtime/debug"
 	"time"
 )
 
@@ -207,6 +208,7 @@ func sanitize(m matcher, s string) (val string, err error) {
 func doSomething(input int) (err error) {
 	// defer a function to recover from the panic
 	defer func() {
+		debug.PrintStack()
 		p := recover()
 		if p == nil {
 			// a nil was return, no panic was raised
