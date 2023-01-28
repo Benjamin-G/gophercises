@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	fundementals.ChannelsMain()
+	fundementals.ContextMain()
 }
