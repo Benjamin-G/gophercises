@@ -6,4 +6,5 @@ import (
 
 func main() {
 	fundementals.FilesMain()
+	fundementals.Walk()
 }
