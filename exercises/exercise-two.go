@@ -40,7 +40,7 @@ func readDataString(fileName string) ([]byte, error) {
 }
 
 func Two() {
-	fileName = flag.String("yml", "exe2.yml", "a yml file of mapped paths to url")
+	fileName = flag.String("yml", "data/exe2.yml", "a yml file of mapped paths to url")
 
 	flag.Usage = func() {
 		fmt.Printf("Usage of %s \n", os.Args[0])

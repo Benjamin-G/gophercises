@@ -392,7 +392,7 @@ func decode(reader io.Reader) (image.Rectangle, error) {
 
 func chapterFive() {
 	// Deferred Function Calls Are Executed in LIFO Order
-	reader, err := os.Open("pix.jpg")
+	reader, err := os.Open("data/pix.jpg")
 	if err != nil {
 		log.Fatal(err)
 	}

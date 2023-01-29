@@ -14,7 +14,7 @@ import (
 )
 
 func One() {
-	filename := flag.String("csv", "problems.csv", "a csv file in the format of 'question,answer")
+	filename := flag.String("csv", "data/problems.csv", "a csv file in the format of 'question,answer")
 	limit := flag.Int("lim", 30, "the time limit for the quiz in seconds")
 
 	flag.Usage = func() {
