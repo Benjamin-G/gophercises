@@ -1,7 +1,6 @@
 package chapterTwo
 
 import (
-	"errors"
 	"fmt"
 	"log"
 )
@@ -14,6 +13,14 @@ func (e ErrJoin) Error() string {
 	return fmt.Sprintf("[ErrJoin] %s", e.err)
 }
 
+type ErrConcat struct {
+	err error
+}
+
+func (e ErrConcat) Error() string {
+	return fmt.Sprintf("[ErrConcat] %s", e.err)
+}
+
 func NestedRunner() {
 	s, err := join2("chapter", "hello world", 20)
 	if err != nil {
@@ -22,6 +29,7 @@ func NestedRunner() {
 	log.Println(s)
 }
 
+// Code smell
 func join1(s1, s2 string, max int) (string, error) {
 	if s1 == "" {
 		return "", ErrJoin{err: fmt.Errorf("s1 is empty")}
@@ -45,10 +53,10 @@ func join1(s1, s2 string, max int) (string, error) {
 
 func join2(s1, s2 string, max int) (string, error) {
 	if s1 == "" {
-		return "", errors.New("s1 is empty")
+		return "", ErrJoin{err: fmt.Errorf("s1 is empty")}
 	}
 	if s2 == "" {
-		return "", errors.New("s2 is empty")
+		return "", ErrJoin{err: fmt.Errorf("s2 is empty")}
 	}
 	concat, err := concatenate(s1, s2)
 	if err != nil {
@@ -61,5 +69,5 @@ func join2(s1, s2 string, max int) (string, error) {
 }
 
 func concatenate(s1, s2 string) (string, error) {
-	return "", nil
+	return "", ErrConcat{err: fmt.Errorf("concatenate")}
 }
