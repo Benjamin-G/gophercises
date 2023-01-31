@@ -22,7 +22,7 @@ func (e ErrConcat) Error() string {
 }
 
 func NestedRunner() {
-	s, err := join2("chapter", "hello world", 20)
+	s, err := join2("chapter", "hello world", 5)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -63,6 +63,7 @@ func join2(s1, s2 string, max int) (string, error) {
 		return "", err
 	}
 	if len(concat) > max {
+		//concat = concat[:max]
 		return concat[:max], nil
 	}
 	return concat, nil
@@ -70,4 +71,5 @@ func join2(s1, s2 string, max int) (string, error) {
 
 func concatenate(s1, s2 string) (string, error) {
 	return "", ErrConcat{err: fmt.Errorf("concatenate")}
+	//return s1 + " " + s2, nil
 }
