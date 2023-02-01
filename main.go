@@ -1,10 +1,9 @@
 package main
 
 import (
-	"gophercises/fundementals"
+	"gophercises/manning/chapterTwo"
 )
 
 func main() {
-	fundementals.FilesMain()
-	fundementals.Walk()
+	chapterTwo.RestrictionRunner()
 }
