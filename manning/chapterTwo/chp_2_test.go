@@ -86,3 +86,18 @@ func TestSortOrgans(t *testing.T) {
 		t.Errorf("Expected sorted by weight, got:\n %v, %v", got, s)
 	}
 }
+
+func TestSliceFn(t *testing.T) {
+	s := SliceFn[int]{
+		S: []int{3, 2, 1},
+		Compare: func(a, b int) bool {
+			return a < b
+		},
+	}
+	sort.Sort(s)
+	got := isSortedAsc(s)
+	//printOrgans(s)
+	if got == false {
+		t.Errorf("Expected sorted asc, got:\n %v %v", got, &s)
+	}
+}

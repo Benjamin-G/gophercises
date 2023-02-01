@@ -166,9 +166,75 @@ func SortRunner() {
 	//fmt.Println(people)
 }
 
-// Restricting
 type IntConfig struct {
 	value int
+	configName
+	t    configType
+	port int
+}
+
+func (c *IntConfig) GetConfigTypeDetails() string {
+	return c.t.Get()
+}
+
+// builder pattern
+
+type ConfigBuilder struct {
+	value *int
+	port  *int
+	t     *configType
+}
+
+func (b *ConfigBuilder) Value(value int) *ConfigBuilder {
+	b.value = &value
+	return b
+}
+
+func (b *ConfigBuilder) Port(port int) *ConfigBuilder {
+	b.port = &port
+	return b
+}
+
+func (b *ConfigBuilder) ConfigName(cN configType) *ConfigBuilder {
+	b.t = &cN
+	return b
+}
+
+func (b *ConfigBuilder) Build() (IntConfig, error) {
+	cfg := IntConfig{}
+
+	if b.port == nil {
+		cfg.port = 8080
+	} else {
+		cfg.port = *b.port
+	}
+
+	if b.value == nil {
+		cfg.value = 0
+	} else {
+		cfg.value = *b.value
+	}
+
+	if b.t == nil {
+		cfg.t = configType{details: "Default Config"}
+	} else {
+		cfg.t = *b.t
+	}
+
+	return cfg, nil
+}
+
+// Restricting
+type configName struct{ name string }
+
+func (c *configName) GetName() string {
+	return c.name
+}
+
+type configType struct{ details string }
+
+func (c *configType) Get() string {
+	return c.details
 }
 
 func (c *IntConfig) Get() int {
@@ -222,4 +288,44 @@ func RestrictionRunner() {
 	fmt.Println(bar.Get())
 	dub(&bar)
 	fmt.Println(bar.Get())
+
+	// Embedded Structs
+	// Promoted
+	bar.configName = configName{name: "embedded"}
+	fmt.Println(bar.configName.name)
+	fmt.Println(bar.name)
+	fmt.Println(bar.GetName())
+
+	// not embedded
+	// can create access to methods
+	bar.t = configType{details: "Should not be embedded"}
+	fmt.Println(bar.t.details)
+	fmt.Println(bar.GetConfigTypeDetails())
+
+	// builder pattern
+	builder := ConfigBuilder{}
+
+	cfg, _ := builder.Build()
+	fmt.Println(cfg)
+	fmt.Println(cfg.GetConfigTypeDetails())
+	builder.Port(8000)
+	builder.ConfigName(configType{details: "Should not be embedded"})
+	builder.Value(1000)
+
+	cfg, _ = builder.Build()
+	fmt.Println(cfg)
+	fmt.Println(cfg.GetConfigTypeDetails())
+
 }
+
+// Generics
+// This interface is used by different functions such as sort.Ints or sort
+// .Float64s.
+type SliceFn[T any] struct {
+	S       []T
+	Compare func(T, T) bool
+}
+
+func (s SliceFn[T]) Len() int           { return len(s.S) }
+func (s SliceFn[T]) Less(i, j int) bool { return s.Compare(s.S[i], s.S[j]) }
+func (s SliceFn[T]) Swap(i, j int)      { s.S[i], s.S[j] = s.S[j], s.S[i] }
