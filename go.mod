@@ -3,18 +3,16 @@ module gophercises
 go 1.19
 
 require (
-	github.com/boltdb/bolt v1.3.1 // indirect
-	github.com/go-playground/locales v0.14.0 // indirect
-	github.com/go-playground/universal-translator v0.18.0 // indirect
-	github.com/go-playground/validator v9.31.0+incompatible // indirect
-	github.com/go-playground/validator/v10 v10.11.1 // indirect
-	github.com/leodido/go-urn v1.2.1 // indirect
-	github.com/lib/pq v1.10.7 // indirect
-	golang.org/x/crypto v0.0.0-20211215153901-e495a2d5b3d3 // indirect
-	golang.org/x/exp v0.0.0-20230124195608-d38c7dcee874 // indirect
-	golang.org/x/sync v0.1.0 // indirect
+	github.com/boltdb/bolt v1.3.1
+	github.com/lib/pq v1.10.7
+	golang.org/x/exp v0.0.0-20230124195608-d38c7dcee874
+	golang.org/x/sync v0.1.0
+	gopkg.in/yaml.v2 v2.4.0
+)
+
+require (
+	github.com/kr/pretty v0.3.0 // indirect
+	github.com/rogpeppe/go-internal v1.8.0 // indirect
 	golang.org/x/sys v0.4.0 // indirect
-	golang.org/x/text v0.3.7 // indirect
-	golang.org/x/tools v0.5.0 // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
+	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 )
