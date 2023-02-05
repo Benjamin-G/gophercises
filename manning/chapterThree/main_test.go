@@ -97,7 +97,7 @@ func BenchmarkConvertToFloat64GivenLength(b *testing.B) {
 
 const n = 1_000_000
 
-var global []Bar
+var globalBar []Bar
 
 func BenchmarkConvert_EmptySlice(b *testing.B) {
 	var local []Bar
@@ -106,7 +106,7 @@ func BenchmarkConvert_EmptySlice(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		local = convertEmptySlice(foos)
 	}
-	global = local
+	globalBar = local
 }
 
 func BenchmarkConvert_GivenCapacity(b *testing.B) {
@@ -116,7 +116,7 @@ func BenchmarkConvert_GivenCapacity(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		local = convertGivenCapacity(foos)
 	}
-	global = local
+	globalBar = local
 }
 
 func BenchmarkConvert_GivenLength(b *testing.B) {
@@ -125,6 +125,31 @@ func BenchmarkConvert_GivenLength(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		local = convertGivenLength(foos)
+	}
+	globalBar = local
+}
+
+var global map[int]struct{}
+
+func BenchmarkMapWithoutSize(b *testing.B) {
+	var local map[int]struct{}
+	for i := 0; i < b.N; i++ {
+		m := make(map[int]struct{})
+		for j := 0; j < n; j++ {
+			m[j] = struct{}{}
+		}
+	}
+	global = local
+}
+
+// 60% faster
+func BenchmarkMapWithSize(b *testing.B) {
+	var local map[int]struct{}
+	for i := 0; i < b.N; i++ {
+		m := make(map[int]struct{}, n)
+		for j := 0; j < n; j++ {
+			m[j] = struct{}{}
+		}
 	}
 	global = local
 }

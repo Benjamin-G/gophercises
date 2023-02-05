@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	chapterThree.SliceRunner()
+	chapterThree.CompareRunner()
 }

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"math"
+	"reflect"
 	"runtime"
 )
 
@@ -306,7 +307,8 @@ func keepFirstTwoElementsOnly(foos []Foo2) []Foo2 {
 func printAlloc() {
 	var m runtime.MemStats
 	runtime.ReadMemStats(&m)
-	fmt.Printf("%d KB\n", m.Alloc/1024)
+	fmt.Printf("%d KB ", m.Alloc/1024)
+	fmt.Printf("%d MB\n", m.Alloc/1024/1024)
 }
 
 func log(i int, s []string) {
@@ -316,4 +318,113 @@ func log(i int, s []string) {
 type customer struct {
 	ID         string
 	Operations []float32
+}
+
+func MemoryLeakRunner() {
+	// Init
+	n := 1_000_000
+	{ //m := make(map[int][128]byte)
+		m := make(map[int]*[128]byte)
+		//printAlloc()
+		//m = make(map[int][128]byte, n)
+		printAlloc()
+
+		// Add elements
+		for i := 0; i < n; i++ {
+			m[i] = randBytes()
+		}
+		printAlloc()
+
+		// Remove elements
+		for i := 0; i < n; i++ {
+			delete(m, i)
+		}
+
+		// End
+		runtime.GC()
+		printAlloc()
+		runtime.KeepAlive(m)
+	}
+	{
+		// This will autmatically use pointers
+		m := make(map[int][256]byte)
+		//printAlloc()
+		printAlloc()
+
+		// Add elements
+		for i := 0; i < n; i++ {
+			m[i] = randBytes256()
+		}
+		printAlloc()
+
+		// Remove elements
+		for i := 0; i < n; i++ {
+			delete(m, i)
+		}
+
+		// End
+		runtime.GC()
+		printAlloc()
+		runtime.KeepAlive(m)
+	}
+}
+
+func randBytes() *[128]byte {
+	return &[128]byte{}
+}
+
+func randBytes256() [256]byte {
+	return [256]byte{}
+}
+
+type customer1 struct {
+	id string
+}
+
+type customer2 struct {
+	id         string
+	operations []float64
+}
+
+func (a customer2) equal(b customer2) bool {
+	if a.id != b.id {
+		return false
+	}
+	if len(a.operations) != len(b.operations) {
+		return false
+	}
+	for i := 0; i < len(a.operations); i++ {
+		if a.operations[i] != b.operations[i] {
+			return false
+		}
+	}
+	return true
+}
+
+func CompareRunner() {
+	cust11 := customer1{id: "x"}
+	cust12 := customer1{id: "x"}
+	fmt.Println(cust11 == cust12)
+	//Doing a few benchmarks locally with structs of
+	//different sizes, on average, reflect.DeepEqual is about 100 times slower than ==.
+	fmt.Println(reflect.DeepEqual(cust11, cust12))
+
+	cust21 := customer2{id: "x", operations: []float64{1.}}
+	cust22 := customer2{id: "x", operations: []float64{1.}}
+	// Doesn't compile
+	// fmt.Println(cust21 == cust22)
+	_ = cust21
+	_ = cust22
+
+	var a any = 3
+	var b any = 3
+	fmt.Println(a == b)
+
+	var cust31 = customer2{id: "x", operations: []float64{1.}}
+	var cust32 = customer2{id: "x", operations: []float64{1.}}
+	fmt.Println(cust31.equal(cust32))
+
+	cust41 := customer2{id: "x", operations: []float64{1.}}
+	cust42 := customer2{id: "x", operations: []float64{1.}}
+	fmt.Println(reflect.DeepEqual(cust41, cust42))
 }
