@@ -1,4 +1,4 @@
-package chapterThree
+package chapterthree
 
 import (
 	"math"

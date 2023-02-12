@@ -1,4 +1,4 @@
-package chapterSix
+package chaptersix
 
 import (
 	"io"

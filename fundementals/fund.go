@@ -26,10 +26,10 @@ import (
 )
 
 func Run() {
-	// chapterTwo()
-	// chapterThree()
-	// chapterFour()
-	// chapterFive()
+	// chaptertwo()
+	// chapterthree()
+	// chapterfour()
+	// chapterfive()
 	chapterSix()
 	chapterFive()
 }

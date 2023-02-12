@@ -1,4 +1,4 @@
-package chapterTwo
+package chaptertwo
 
 import (
 	"bytes"

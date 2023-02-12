@@ -1,4 +1,4 @@
-package chapterSeven
+package chapterseven
 
 import (
 	"fmt"
