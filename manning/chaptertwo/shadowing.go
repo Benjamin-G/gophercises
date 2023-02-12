@@ -36,11 +36,13 @@ func listing1() error {
 
 func listing2() error {
 	var client *http.Client
+
 	if tracing {
 		c, err := createClientWithTracing()
 		if err != nil {
 			return err
 		}
+
 		client = c
 	} else {
 		c, err := createDefaultClient()
@@ -52,12 +54,15 @@ func listing2() error {
 
 	log.Printf("%[1]T %[1]v", client)
 	_ = client
+
 	return nil
 }
 
 func listing3() error {
 	var client *http.Client
+
 	var err error
+
 	if tracing {
 		client, err = createClientWithTracing()
 		if err != nil {
@@ -71,24 +76,29 @@ func listing3() error {
 	}
 
 	_ = client
+
 	return nil
 }
 
 // BEST WAY if SHARED Error Handling
 func listing4() error {
 	var client *http.Client
+
 	var err error
+
 	if tracing {
 		client, err = createClientWithTracing()
 	} else {
 		client, err = createDefaultClient()
 	}
+
 	if err != nil {
 		// Common error handling
 		return err
 	}
 
 	_ = client
+
 	return nil
 }
 
