@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gophercises/manning/chaptersix"
+	"gophercises/manning/chapternine"
 )
 
 func main() {
-	chaptersix.ChapterSixRunner()
+	chapternine.MutexRunner()
 }
