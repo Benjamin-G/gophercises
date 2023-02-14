@@ -1,6 +1,12 @@
 package chaptereight
 
-import "sync"
+import (
+	"fmt"
+	"io"
+	"runtime"
+	"sync"
+	"sync/atomic"
+)
 
 func sequentialMergesort(s []int) {
 	if len(s) <= 1 {
@@ -98,4 +104,146 @@ func merge(s []int, middle int) {
 		current++
 		helperLeft++
 	}
+}
+
+func giveTwo() int64 {
+	var i int64
+
+	ch := make(chan int64)
+
+	go func() {
+		ch <- 1
+	}()
+
+	go func() {
+		ch <- 1
+	}()
+
+	i += <-ch
+	i += <-ch
+
+	return i
+}
+
+// This is so weird. I don't understand why this does not work.
+func giveTwoV2() int64 {
+	var i atomic.Int64
+
+	var wg sync.WaitGroup
+
+	wg.Add(1)
+
+	go func() {
+		defer wg.Done()
+		i.Add(1)
+		i.Add(1)
+	}()
+
+	func() {
+		i := 0
+		ch := make(chan struct{})
+
+		go func() {
+			<-ch
+			fmt.Println(i)
+		}()
+		i++
+		ch <- struct{}{}
+	}()
+
+	wg.Wait()
+
+	return i.Load()
+}
+
+// workload type
+func dumbReaderRun() {
+	res1, _ := read1(&dummyReader{})
+	fmt.Println(res1)
+
+	res2, _ := read2(&dummyReader{})
+	fmt.Println(res2)
+}
+
+func read1(r io.Reader) (int, error) {
+	count := 0
+
+	for {
+		b := make([]byte, 1024)
+		_, err := r.Read(b)
+
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+
+			return 0, err
+		}
+
+		count += task(b)
+	}
+
+	return count, nil
+}
+
+func read2(r io.Reader) (int, error) {
+	var count int64
+
+	wg := sync.WaitGroup{}
+
+	n := runtime.GOMAXPROCS(0)
+	fmt.Printf("GOMAXPROCS: %d\n", n)
+	//n := 10
+
+	ch := make(chan []byte, n)
+	wg.Add(n)
+
+	for i := 0; i < n; i++ {
+		go func() {
+			defer wg.Done()
+
+			for b := range ch {
+				v := task(b)
+				atomic.AddInt64(&count, int64(v))
+			}
+		}()
+	}
+
+	for {
+		b := make([]byte, 1024)
+		_, err := r.Read(b)
+
+		if err != nil {
+			if err == io.EOF {
+				break
+			}
+
+			return 0, err
+		}
+		ch <- b
+	}
+
+	close(ch)
+	wg.Wait()
+
+	return int(count), nil
+}
+
+func task(b []byte) int {
+	return len(b)
+}
+
+type dummyReader struct {
+	i int
+}
+
+func (c *dummyReader) Read(p []byte) (n int, err error) {
+	if c.i == 3 {
+		return 0, io.EOF
+	}
+
+	copy(p, []byte{0, 1, 2})
+	c.i++
+
+	return 3, nil
 }

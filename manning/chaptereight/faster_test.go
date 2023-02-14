@@ -77,3 +77,25 @@ func getRandomElements() []int {
 
 	return res
 }
+
+func TestGiveTwo(t *testing.T) {
+	t.Parallel()
+
+	const input = int64(2)
+
+	got := giveTwo()
+	if got != input {
+		t.Errorf("giveTwo: expected: %v, got: %v", input, got)
+	}
+
+	got = giveTwoV2()
+	if got != input {
+		t.Errorf("giveTwoV2: expected: %v, got: %v", input, got)
+	}
+}
+
+func TestDummyReaderRead(t *testing.T) {
+	t.Parallel()
+
+	dumbReaderRun()
+}
