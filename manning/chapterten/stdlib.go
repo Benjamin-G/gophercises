@@ -73,7 +73,7 @@ type handler struct {
 	url    string
 }
 
-//func handler2(w http.ResponseWriter, req *http.Request) {
+// func handler2(w http.ResponseWriter, req *http.Request) {
 //	err := foo(req)
 //	if err != nil {
 //		http.Error(w, "foo", http.StatusInternalServerError)
