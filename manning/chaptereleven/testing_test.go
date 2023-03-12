@@ -1,6 +1,7 @@
 package chaptereleven
 
 import (
+	"errors"
 	"io"
 	"net/http"
 	"net/http/httptest"
@@ -246,4 +247,45 @@ func TestFoo2(t *testing.T) {
 
 func randomString(i int) string {
 	return string(make([]byte, i))
+}
+
+func TestCustomer1(t *testing.T) {
+	customer, err := createCustomer1("foo")
+	if err != nil {
+		t.Fatal(err)
+	}
+	// ...
+	_ = customer
+}
+
+func createCustomer1(someArg string) (Customer, error) {
+	customer, err := customerFactory(someArg)
+	if err != nil {
+		return Customer{}, err
+	}
+	return customer, nil
+}
+
+// Instead of returning an error, createCustomer fails the test directly if it can’t create a
+// Customer. This makes TestCustomer smaller to write and easier to read.
+func TestCustomer2(t *testing.T) {
+	customer := createCustomer2(t, "foo")
+	// ...
+	_ = customer
+}
+
+func createCustomer2(t *testing.T, someArg string) Customer {
+	t.Helper()
+	customer, err := customerFactory(someArg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return customer
+}
+
+func customerFactory(someArg string) (Customer, error) {
+	if someArg == "" {
+		return Customer{}, errors.New("empty")
+	}
+	return Customer{id: someArg}, nil
 }

@@ -194,3 +194,7 @@ func readAll(r io.Reader, retries int) ([]byte, error) {
 		}
 	}
 }
+
+type Customer struct {
+	id string
+}
