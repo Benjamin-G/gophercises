@@ -53,3 +53,47 @@ func sum_2(foos []Foo2) int64 {
 	}
 	return s
 }
+
+// First, we use the println built-in function instead
+// of fmt.Println, which would force allocating the c variable on the heap. Second, we
+// disable inlining on the sumValue function; otherwise, the function call would not
+// occur
+func listing1() {
+	a := 3
+	b := 2
+
+	c := sumValue(a, b)
+	println(c)
+}
+
+//go:noinline
+func sumValue(x, y int) int {
+	z := x + y
+	return z
+}
+
+func listing2() {
+	a := 3
+	b := 2
+
+	c := sumPtr(a, b)
+	println(*c)
+}
+
+//go:noinline
+func sumPtr(x, y int) *int {
+	z := x + y
+	return &z
+}
+
+func listing3() {
+	a := 3
+	b := 2
+	c := sum(&a, &b)
+	println(c)
+}
+
+//go:noinline
+func sum(x, y *int) int {
+	return *x + *y
+}
