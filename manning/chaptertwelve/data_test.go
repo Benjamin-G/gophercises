@@ -21,3 +21,23 @@ func BenchmarkAdd2(b *testing.B) {
 	}
 	global_ = local
 }
+
+func BenchmarkSum1(b *testing.B) {
+	var local int64
+	s := make([]Foo1, n)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		local = sum1(s)
+	}
+	global = local
+}
+
+func BenchmarkSum_2(b *testing.B) {
+	var local int64
+	s := make([]Foo2, n)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		local = sum_2(s)
+	}
+	global = local
+}
